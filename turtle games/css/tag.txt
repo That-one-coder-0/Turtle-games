@@ -1,0 +1,82 @@
+
+@font-face {
+    font-family: 'text';
+    src: url(pixal2.ttf);
+}
+*{
+    font-family: 'text';
+    text-align: center;
+}
+body{
+    background-color: blue;
+    transition: all 0.5s;
+}
+button{
+    font-size: 20px;
+    border-radius: 10px;
+    color:aqua;
+    background-color: olive;
+    padding: 5px;
+    transition: all 0.5s;
+}
+button:hover{
+    border-radius: 10px;
+    color:olive;
+    background-color: aqua;
+}
+#mainMenu{
+    display: block;
+    background-color: darkblue;
+    border-radius: 10px;
+    color: aqua;
+    padding: 10px;
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+#gameScreen{
+    display: none;
+    border-radius: 10px;
+}
+#singlePlayerMenu{
+    display: none;
+    border-radius: 10px;
+}
+#multiPlayerMenu{
+    display: none;
+    border-radius: 10px;
+}
+#Shop{
+    display: none;
+    border-radius: 10px;
+}
+#settings{
+    display: none;
+    border-radius: 10px;
+}
+#shopbutton{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 100%;
+    margin: 10px;
+    transition: all 1.3s;
+    width: 50px;
+    height: 50px;
+}
+#shopbutton:hover{
+    transform: rotate(360deg);
+}
+#settingIcon{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    margin: 10px;
+    width: 50px;
+    transition: all 1s;
+}
+#settingIcon:hover{
+    rotate: 360deg;
+}
