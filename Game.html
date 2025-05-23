@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycling Game</title>
+    <style>
+        #bins{
+            display: flex;
+        }
+        #TrashBin{
+            background-color: grey;
+        }
+        #PaperBin{
+            background-color: white;
+        }
+        #GlassBin{
+            background-color: green;
+            
+        }
+        #PlasticBin{
+            background-color: lightseagreen;
+        }
+        #MetalBin{
+            background-color: steelblue;
+        }
+        .bin{
+            width: 400px;
+            height: 500px;
+        }
+        #trash{
+            width: 30px;
+            height: 30px;
+            z-index: 5;
+            border:dashed tomato 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="GameContainer">
+        <div id="trash" draggable="true"></div>
+        <div id="bins">
+            <div id="MetalBin" class="bin" ondrop="TrashDroppedOverMe()" ondragover="Overme()"></div>
+            <div id="PlasticBin"class="bin" ondrop="TrashDroppedOverMe()" ondragover="Overme()"></div>
+            <div id="GlassBin"class="bin" ondrop="TrashDroppedOverMe()" ondragover="Overme()"></div>
+            <div id="PaperBin"class="bin" ondrop="TrashDroppedOverMe()" ondragover="Overme()"></div>
+            <div id="TrashBin"class="bin" ondrop="TrashDroppedOverMe()" ondragover="Overme()"></div>
+        </div>
+        <div id="extraInfo">
+            <h1 id="TrashDraggedAbove"></h1>
+            <div id="checkWasCorrect">
+                <img src="" style="display: none;" id="IconIndictor">
+                <h2 id="WasCorrect"></h2>
+            </div>
+        </div>
+    </div>
+    <script>
+        let score = 0;
+        const trash = document.getElementById('trash')
+        function spawnTrash(type){
+            type = Math.floor(Math.random() * 5) + 1;
+            if (type == 1) {
+                trash.style.backgroundColor = 'grey'
+                trash.classList = ''
+                trash.classList = 'trash'
+            } else if (type == 2) {
+                trash.style.backgroundColor = 'white'
+                trash.classList = ''
+                trash.classList = 'paper'
+            }
+            else if (type == 3) {
+                trash.style.backgroundColor = 'green'
+                trash.classList = ''
+                trash.classList = 'glass'
+            }
+            else if (type == 4) {
+                trash.style.backgroundColor = 'lightseagreen'
+                trash.classList = ''
+                trash.classList = 'plastic'
+            }
+            else if (type == 5) {
+                trash.style.backgroundColor = 'steelblue'
+                trash.classList = ''
+                trash.classList = 'metal'
+            }
+        }
+        spawnTrash()
+        function TrashDroppedOverMe(){
+            if(trash.classList == 'trash' && this.id =='TrashBin'){
+                score++
+                spawnTrash()
+            }else if(trash.classList == 'paper' && this.id =='PaperBin'){
+                score++
+                spawnTrash()
+            }else if(trash.classList == 'glass' && this.id =='GlassBin'){
+                score++
+                spawnTrash()
+            }else if(trash.classList == 'plastic' && this.id =='PlasticBin'){
+                score++
+                spawnTrash()
+            }else if(trash.classList == 'metal' && this.id =='MetalBin'){
+                score++
+                spawnTrash()
+            }else{
+
+            }
+            updateScore()
+        }
+        function getByID(input){
+        return document.getElementById(input)
+        }
+        function updateScore(){
+            document.getElementById('')
+        }
+        function Overme(myname){
+            trash.peventDefault()
+        }
+    </script>
+
+</body>
+</html>

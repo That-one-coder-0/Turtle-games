@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tag</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'text';
+            src: url(css/pixal2.ttf);
+        }
+        *{
+            font-family: 'text';
+            text-align: center;
+        }
+        body{
+            background-color: blue;
+            transition: all 0.5s;
+            max-width: 1920px;
+        }
+        button{
+            font-size: 20px;
+            border-radius: 10px;
+            color:aqua;
+            background-color: olive;
+            padding: 5px;
+            transition: all 0.5s;
+        }
+        button:hover{
+            border-radius: 10px;
+            color:olive;
+            background-color: aqua;
+        }
+        #gameContainer {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: #777;
+            display: none;
+        }
+
+        #player {
+            position: absolute;
+            display: none;
+            width: 20px;
+            height: 30px;
+        }
+        #player2 {
+            position: absolute;
+            display: none;
+            width: 20px;
+            height: 30px;
+        }
+        #player3,#player4{
+            display: block;
+            position:absolute;
+            bottom:3000px;
+            right: 500000000000px;
+        }
+        .it-circle {
+            background-color:rgba(255, 0, 0, 0.5);
+            border-radius: 1px;
+        }
+        .platform {
+            position: absolute;
+            background-color:rgb(175, 128, 0);
+        }
+        #shopbutton{
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            border-radius: 100%;
+            margin: 10px;
+            transition: all 1.3s;
+            width: 50px;
+            height: 50px;
+        }
+        #shopbutton:hover{
+            transform: rotate(360deg);
+        }
+        #settingIcon{
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            margin: 10px;
+            width: 50px;
+            transition: all 1s;
+        }
+        #settingIcon:hover{
+            rotate: 360deg;
+        }
+        #mainMenu{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 274px;
+        }
+        #settings {
+            display: none;
+        }
+        #endDiv{
+            display: none;
+        }
+        #selectCharcter {
+            display: none;
+        }
+        #selectCharcter2 {
+            display: none;
+        }
+        #selectCharcter3 {
+            display: none;
+        }
+    </style>
+</head>
+<body id="gameScreen">
+    <input type="hidden" id="timeSet" value="60">
+<!-- Icons -->
+    <img src="assets/other/Turtle Token.png" id="shopbutton">
+    <img src="assets/other/setting icon.png" id="settingIcon" onclick="setting()">
+<!-- Menus -->
+<div id="modeSelect">
+    <br>
+    <button id="multiPlayer" onclick="multi1()">2 Player</button>
+    <br>
+    <button id="singlePlayer" onclick="multi2()">3 Player</button>
+    <br>
+</div>
+    <div id="gameContainer" style='background-image: url("assets/backgrounds/sky.png"); background-repeat: no-repeat;background-size: cover;'>
+        <h1 id="timer">0</h1>
+        <div id="endDiv">
+            <h1 id="h1 end"></h1>
+            <h2 id="h2 end"></h2>
+            <!--<button id="backToMain" onclick="">Back to main menu</button>-->
+            <button id="backToMain" onclick="window.location.reload()">Back to main menu</button>
+            <button id="playAgain" onclick="startGame()">Play again</button>
+        </div>
+        <div style="width: 36px;height: 26px;" id="player" ></div>
+        <div style="width: 36px;height: 26px;" id="player2" class="it-circle"></div>
+        <div style="width: 36px;height: 26px;" id="player3"></div>
+        <div style="width: 36px;height: 26px;" id="player4"></div>
+    </div>
+    <!-- Settings Menu -->
+    <div id="settings" style="display: none;">
+        <h3>Volume</h3>
+        <br>
+        <input type="range" id="slider" value="100" max="100" min="0" onchange="volume()">
+        <br>
+        <h3>Theme</h3>
+        <select name="theme" id="theme" onchange="changeTheme()">
+            <option value="light">light</option>
+            <option value="dark">dark</option>
+        </select>
+        <br>
+        <div id="keyBindings" style="display: none;">
+            <h3>Key Bindings</h3>
+            <p>Player 1: <span id="player1">W</span> <button onclick="rebindKey('player1')">Change</button></p>
+            <p>Player 2: <span id="player2">ArrowRight</span> <button onclick="rebindKey('player2')">Change</button></p>
+            <p>Player 3: <span id="player3">J</span> <button onclick="rebindKey('player3')">Change</button></p>
+        </div>
+        <h3>Extras</h3>
+        <input type="checkbox" name="onlineTimeSaver" id="onlineTimeSaver"><label for="onlineTimeSaver">Save PB online</label>
+        <br><br>
+        <input type="checkbox" name="fpsonoff" id="fpsonoff" onchange="updateFPS()"><label for="fpsonoff">FPS Counter</label>
+        <h4 id="fpsCounter" style="display: none;">FPS: 0</h4>
+        <select onchange="document.getElementById('timeSet').value = this.value" id="timeSelect">
+            <option value="60">60sec/1min</option>
+            <option value="120">120sec/2min</option>
+            <option value="180">180sec/3min</option>
+            <option value="240">240sec/4min</option>
+        </select>
+        <select id="changeBackground" onchange="changeBackground(this.value)">
+            <option value="sky">Sky</option>
+            <option value="foerst">Forest</option>
+            <option value="pond">Pond</option>
+        </select>
+    </div>
+
+    <!-- Character Select Menu -->
+    <div id="selectCharcter" style="display: none;">
+        <br><br><br>
+        <br>
+        <div id="selectCharcter1">
+            <button onclick="select3()"><</button>
+            <img src="assets/turtle/red/(state-ready-right).png" id="img2">
+            <button onclick="select4()">></button>
+            <br>
+            <h3>Player 1 <br> <img src="assets/other/wad.png"width="120"></h3>
+            <button id="submit1" onclick="Submit1()">Submit</button>
+        </div>
+        <div id="selectCharcter2" style="display: none;">
+            <button onclick="select1()"><</button>
+            <img src="assets/turtle/red/(state-ready-left).png" id="img1">
+            <button onclick="select2()">></button>
+            <br>
+            <h3>Player 2 <br> <img src="assets/other/←↑→.png"width="120"></h3>
+            <button id="submit2" onclick="Submit2()">Submit</button>
+        </div>
+        <div id="selectCharcter3" style="display: none;">
+            <button onclick="select5()"><</button>
+            <img src="assets/turtle/red/(state-ready-left).png" id="img3">
+            <button onclick="select6()">></button>
+            <br>
+            <h3>Player 3 <br> <img src="assets/other/ijl.png"width="120"></h3>
+            <button id="submit3" onclick="Submit3()">Submit</button>
+        </div>
+    </div>
+    <audio src="sounds/songs/Racing mode.mp3" id="audio"></audio>
+    <script src="js/tag.js">
+    </script>
+</body>
+</html>
