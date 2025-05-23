@@ -1,3 +1,3 @@
-# Turtle-eat
+# Turtle-Games
 Hi, these are my first coding projects 
 enjoy.
