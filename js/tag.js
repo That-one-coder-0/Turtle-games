@@ -887,9 +887,6 @@ function select1() {
         img1.src = 'assets/turtle/paint/(state-ready-left).png';
         Charcter1 = 'paint';
     } else if (Charcter1 == 'paint') {
-        img1.src = 'assets/turtle/sea-yan/(state-ready-left).png';
-        Charcter1 = 'sea-yan';
-    } else if (Charcter1 == 'sea-yan') {
         img1.src = 'assets/turtle/yellow/(state-ready-left).png';
         Charcter1 = 'yellow';
     } else if (Charcter1 == 'yellow') {
@@ -902,12 +899,9 @@ function select2() {
     if (Charcter1 == 'paint') {
         img1.src = 'assets/turtle/box/(state-ready-left).png';
         Charcter1 = 'box';
-    } else if (Charcter1 == 'sea-yan') {
+    } else if (Charcter1 == 'yellow') {
         img1.src = 'assets/turtle/paint/(state-ready-left).png';
         Charcter1 = 'paint';
-    } else if (Charcter1 == 'yellow') {
-        img1.src = 'assets/turtle/sea-yan/(state-ready-left).png';
-        Charcter1 = 'sea-yan';
     } else if (Charcter1 == 'red') {
         img1.src = 'assets/turtle/yellow/(state-ready-left).png';
         Charcter1 = 'yellow';
@@ -925,9 +919,6 @@ function select3() {
         img2.src = 'assets/turtle/paint/(state-ready-right).png';
         Charcter2 = 'paint';
     } else if (Charcter2 == 'paint') {
-        img2.src = 'assets/turtle/sea-yan/(state-ready-right).png';
-        Charcter2 = 'sea-yan';
-    } else if (Charcter2 == 'sea-yan') {
         img2.src = 'assets/turtle/yellow/(state-ready-right).png';
         Charcter2 = 'yellow';
     } else if (Charcter2 == 'yellow') {
@@ -940,12 +931,9 @@ function select4() {
     if (Charcter2 == 'paint') {
         img2.src = 'assets/turtle/box/(state-ready-right).png';
         Charcter2 = 'box';
-    } else if (Charcter2 == 'sea-yan') {
+    } else if (Charcter2 == 'yellow') {
         img2.src = 'assets/turtle/paint/(state-ready-right).png';
         Charcter2 = 'paint';
-    } else if (Charcter2 == 'yellow') {
-        img2.src = 'assets/turtle/sea-yan/(state-ready-right).png';
-        Charcter2 = 'sea-yan';
     } else if (Charcter2 == 'red') {
         img2.src = 'assets/turtle/yellow/(state-ready-right).png';
         Charcter2 = 'yellow';
