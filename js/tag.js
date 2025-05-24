@@ -951,9 +951,6 @@ function select5() {
         img3.src = 'assets/turtle/paint/(state-ready-left).png';
         Charcter3 = 'paint';
     } else if (Charcter3 == 'paint') {
-        img3.src = 'assets/turtle/sea-yan/(state-ready-left).png';
-        Charcter3 = 'sea-yan';
-    } else if (Charcter3 == 'sea-yan') {
         img3.src = 'assets/turtle/yellow/(state-ready-left).png';
         Charcter3 = 'yellow';
     } else if (Charcter3 == 'yellow') {
@@ -966,12 +963,9 @@ function select6() {
     if (Charcter3 == 'paint') {
         img3.src = 'assets/turtle/box/(state-ready-left).png';
         Charcter3 = 'box';
-    } else if (Charcter3 == 'sea-yan') {
+    } else if (Charcter3 == 'yellow') {
         img3.src = 'assets/turtle/paint/(state-ready-left).png';
         Charcter3 = 'paint';
-    } else if (Charcter3 == 'yellow') {
-        img3.src = 'assets/turtle/sea-yan/(state-ready-left).png';
-        Charcter3 = 'sea-yan';
     } else if (Charcter3 == 'red') {
         img3.src = 'assets/turtle/yellow/(state-ready-left).png';
         Charcter3 = 'yellow';
