@@ -958,7 +958,7 @@ function select5() {
         Charcter3 = 'red';
     }
 }
- 
+  
 function select6() {
     if (Charcter3 == 'paint') {
         img3.src = 'assets/turtle/box/(state-ready-left).png';
