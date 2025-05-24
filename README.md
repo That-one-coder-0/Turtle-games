@@ -8,9 +8,6 @@ enjoy.🐢
 # **In progress 🐢/ not finished 🐢/ not started🐢**
  * clicker🐢 [click me](clicker.html) (see what i did there)🐢
  * 🐢fighting [](fighting.html)🐢
-# **In progress 🐢/ not finished 🐢/ not started🐢** 
- * clicker🐢 [click me](https://that-one-coder-0.github.io/Turtle-games/clicker.html) (see what i did there)🐢
- * 🐢fighting [](https://that-one-coder-0.github.io/Turtle-games/fighting.html)🐢
  * pet🐢
  * racing🐢
 🐢
