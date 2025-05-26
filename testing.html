@@ -9,23 +9,7 @@
   border: 1px solid #aaaaaa;
 }
 </style>
-<script>
-function dragstartHandler(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
-  document.getElementById(`${ev.target.id}`).style.display = 'none'
-}
 
-function dragoverHandler(ev) {
-  ev.preventDefault();
-}
-
-function dropHandler(ev) {
-  ev.preventDefault();
-  const data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
-  document.getElementById(`${ev.target.id}`).style.display = 'block'
-}
-</script>
 </head>
 <body>
 
@@ -38,6 +22,22 @@ function dropHandler(ev) {
 <div id="div1" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
 <br>
 <h1 id="h1" draggable="true" ondragstart="dragstartHandler(event)">W3Schools.com</h1>
+    <script>
+        function dragstartHandler(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+        document.getElementById(`${ev.target.id}`).style.display = 'none';
+        }
 
+        function dragoverHandler(ev) {
+        ev.preventDefault();
+        }
+
+        function dropHandler(ev) {
+        ev.preventDefault();
+        const data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        document.getElementById(data).style.display = 'block';
+        }
+    </script>
 </body>
 </html>
