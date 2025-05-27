@@ -21,7 +21,7 @@
 <br>
 <div id="div1" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
 <br>
-<h1 id="h1" draggable="true" ondragstart="dragstartHandler(event)">W3Schools.com</h1>
+<h1 id="h1" draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)">W3Schools.com</h1>
     <script>
         function dragstartHandler(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
@@ -37,6 +37,9 @@
         const data = ev.dataTransfer.getData("text");
         ev.target.appendChild(document.getElementById(data));
         document.getElementById(data).style.opacity = 1;
+        }
+        function dragendHandler(ev) {
+        ev.target.style.opacity = 1;
         }
     </script>
 </body>
