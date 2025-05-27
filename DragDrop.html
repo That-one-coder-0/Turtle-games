@@ -25,7 +25,7 @@
     <script>
         function dragstartHandler(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
-        document.getElementById(`${ev.target.id}`).style.opacity = 0.01;
+        document.getElementById(`${ev.target.id}`).style.opacity = 0.0001;
         }
 
         function dragoverHandler(ev) {
