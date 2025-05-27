@@ -6,7 +6,19 @@
   width: 350px;
   height: 70px;
   padding: 10px;
-  border: 1px solid #aaaaaa;
+  border: 1px solid blue;
+}
+#div2 {
+  width: 350px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid green;
+}
+#div3 {
+  width: 350px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid red;
 }
 </style>
 
@@ -19,13 +31,15 @@
 
 <div id="div1" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
 <br>
-<div id="div1" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+<div id="div2" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+<br>
+<div id="div3" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
 <br>
 <h1 id="h1" draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)">W3Schools.com</h1>
     <script>
         function dragstartHandler(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
-        document.getElementById(`${ev.target.id}`).style.opacity = 0.0001;
+        document.getElementById(`${ev.target.id}`).style.opacity = 0.001;
         }
 
         function dragoverHandler(ev) {
