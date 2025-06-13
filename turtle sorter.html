@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #474747;
+  color: #fff;
+  text-align: center;
+}
+div{
+  position: absolute;
+  top: 40%;
+}
+#div1 {
+  left: 0vw;
+  width:350px;
+  padding:20px;
+  border-top: 5px dotted goldenrod;
+  border-bottom: 5px dotted goldenrod;
+  border-left: 5px dotted goldenrod;
+  border-right: 5px dotted goldenrod;
+}
+#div4 {
+  left: 75vw;
+  width:350px;
+  padding: 20px;
+  border-top: 5px dotted yellow;
+  border-bottom: 5px dotted yellow;
+  border-left: 5px dotted yellow;
+  border-right: 5px dotted yellow;
+}
+#div2 {
+  left: 25vw;
+  width:350px;
+  padding: 20px;
+  border: 5px dotted green;
+}
+#div3 {
+  left: 50vw;
+  width:350px;
+  padding: 20px;
+  border: 5px dotted red;
+}
+img{
+  width: 80px;
+  cursor: move;
+}
+button{
+  position: absolute;
+  top: 80%;
+  left: 50vw;
+  font-size: 2vw;
+  background-color: #fff;
+  color: #474747;
+}
+</style>
+<title>Turtle sorter</title>
+</head>
+<body>
+
+<h3>Turle Sorter</h1>
+
+<p>Drag and drop the turtle into the rectangles:</p>
+
+<div id="div1" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+
+<div id="div2" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+
+<div id="div3" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+
+<div id="div4" ondrop="dropHandler(event)"   ondragover="dragoverHandler(event)"></div>
+
+<br><br><button id="submit" onclick="submit()">Submit</button><br><br>
+    <script>
+      function dragstartHandler(ev) {
+      ev.dataTransfer.setData("img", ev.target.id);
+      document.getElementById(`${ev.target.id}`).style.opacity = 0.001;
+      }
+      function dragoverHandler(ev) {
+      ev.preventDefault();
+      }
+      function dropHandler(ev) {
+      ev.preventDefault();
+      const data = ev.dataTransfer.getData("img");
+      if( ev.target.id == 'div1' || ev.target.id == 'div2' || ev.target.id == 'div3' || ev.target.id == 'div4' ){
+      ev.target.appendChild(document.getElementById(data));
+      }
+      document.getElementById(data).style.opacity = 1;
+      }
+      function dragendHandler(ev) {
+      ev.target.style.opacity = 1;
+      }
+      function submit() {
+        let correct = 0;
+        const div1 = document.getElementById('div1');
+        const div2 = document.getElementById('div2');
+        const div3 = document.getElementById('div3');
+        const div4 = document.getElementById('div4');
+        const img = document.getElementById('img');   
+        const imgs = document.querySelectorAll('img');     
+        imgs.forEach(img1 => {
+            if (div1.contains(img1) && (img1.src.includes('box'))
+              ||div2.contains(img1) && img1.src.includes('red')
+              ||div3.contains(img1) && img1.src.includes('paint')
+              ||div4.contains(img1) && img1.src.includes('yellow')) {
+            correct++;
+            if(correct == imgs.length){
+            SpawnNewTurtle();
+            alert('Correct!');
+            }
+          }else {
+            alert('Incorrect! Try again.');
+          }
+          })
+      }
+      function SpawnNewTurtle() {
+        const newTurtle = {
+          src: '',
+          id: ''
+        };
+        const randomColor = Math.floor(Math.random() * 4);
+        if (randomColor === 0) {
+          newTurtle.src = 'assets/turtle/yellow/(state-ready-right).png';
+        } else if (randomColor === 1) {
+          newTurtle.src = 'assets/turtle/red/(state-ready-right).png';
+        } else if (randomColor === 2) {
+          newTurtle.src = 'assets/turtle/box/(state-ready-right).png';
+        } else {
+          newTurtle.src = 'assets/turtle/paint/(state-ready-right).png';
+        }
+        newTurtle.id = `img${document.body.querySelectorAll('img').length}`;
+        setTimeout(() => {
+          const img = document.createElement('img');
+          img.id = newTurtle.id;
+          img.src = newTurtle.src;
+          img.draggable = true;
+          img.ondragstart = dragstartHandler;
+          img.ondragend = dragendHandler;
+          document.body.appendChild(img);
+        }, 200);
+      }
+      SpawnNewTurtle()
+    </script>
+</body>
+</html>

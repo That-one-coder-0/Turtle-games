@@ -3,116 +3,7 @@
 <head>
     <title>Tag</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <style>
-        @font-face {
-            font-family: 'text';
-            src: url(css/pixal2.ttf);
-        }
-        *{
-            font-family: 'text';
-            text-align: center;
-        }
-        body{
-            background-color: blue;
-            transition: all 0.5s;
-            max-width: 1920px;
-        }
-        button{
-            font-size: 20px;
-            border-radius: 10px;
-            color:aqua;
-            background-color: olive;
-            padding: 5px;
-            transition: all 0.5s;
-        }
-        button:hover{
-            border-radius: 10px;
-            color:olive;
-            background-color: aqua;
-        }
-        #gameContainer {
-            position: absolute;
-            top: 0px;
-            bottom: 0px;
-            left: 0px;
-            right: 0px;
-            background-color: #777;
-            display: none;
-        }
-
-        #player {
-            position: absolute;
-            display: none;
-            width: 20px;
-            height: 30px;
-        }
-        #player2 {
-            position: absolute;
-            display: none;
-            width: 20px;
-            height: 30px;
-        }
-        #player3,#player4{
-            display: block;
-            position:absolute;
-            bottom:3000px;
-            right: 500000000000px;
-        }
-        .it-circle {
-            background-color:rgba(255, 0, 0, 0.5);
-            border-radius: 1px;
-        }
-        .platform {
-            position: absolute;
-            background-color:rgb(175, 128, 0);
-        }
-        #shopbutton{
-            position: absolute;
-            right: 5px;
-            bottom: 5px;
-            border-radius: 100%;
-            margin: 10px;
-            transition: all 1.3s;
-            width: 50px;
-            height: 50px;
-        }
-        #shopbutton:hover{
-            transform: rotate(360deg);
-        }
-        #settingIcon{
-            position: absolute;
-            left: 0px;
-            bottom: 0px;
-            margin: 10px;
-            width: 50px;
-            transition: all 1s;
-        }
-        #settingIcon:hover{
-            rotate: 360deg;
-        }
-        #mainMenu{
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 274px;
-        }
-        #settings {
-            display: none;
-        }
-        #endDiv{
-            display: none;
-        }
-        #selectCharcter {
-            display: none;
-        }
-        #selectCharcter2 {
-            display: none;
-        }
-        #selectCharcter3 {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="css/tag.css">
 </head>
 <body id="gameScreen">
     <input type="hidden" id="timeSet" value="60">
@@ -123,7 +14,7 @@
 <div id="modeSelect">
     <br>
     <button id="multiPlayer" onclick="multi1()">2 Player</button>
-    <br>
+    <br><br>
     <button id="singlePlayer" onclick="multi2()">3 Player</button>
     <br>
 </div>
@@ -133,13 +24,13 @@
             <h1 id="h1 end"></h1>
             <h2 id="h2 end"></h2>
             <!--<button id="backToMain" onclick="">Back to main menu</button>-->
-            <button id="backToMain" onclick="window.location.reload()">Back to main menu</button>
+            <button id="backToMain" onclick="window.onbeforeunload = null;window.location.reload();">Back to main menu</button>
             <button id="playAgain" onclick="startGame()">Play again</button>
         </div>
-        <div style="width: 36px;height: 26px;" id="player" ></div>
-        <div style="width: 36px;height: 26px;" id="player2" class="it-circle"></div>
-        <div style="width: 36px;height: 26px;" id="player3"></div>
-        <div style="width: 36px;height: 26px;" id="player4"></div>
+        <div style="width: 2.783882783882784vw;height: 1.9047619047619049vw;" id="player" ></div>
+        <div style="width: 2.783882783882784vw;height: 1.9047619047619049vw;" id="player2" class="it-circle"></div>
+        <div style="width: 2.783882783882784vw;height: 1.9047619047619049vw;" id="player3"></div>
+        <div style="width: 2.783882783882784vw;height: 1.9047619047619049vw;" id="player4"></div>
     </div>
     <!-- Settings Menu -->
     <div id="settings" style="display: none;">

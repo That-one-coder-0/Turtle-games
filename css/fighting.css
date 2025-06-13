@@ -1,77 +1,338 @@
 @font-face {
     font-family: 'text';
-    src: url(pixal2.ttf);
+    src: url(css/pixal2.ttf);
+}
+*{
+    font-family: 'text';
+    text-align: center;
 }
 body{
     background-color: blue;
     transition: all 0.5s;
-}
-*
-{
-    font-family: 'text';
-}
-#selectMode{
-    list-style: none;
-}
-#mainScreenSelect{
-    background-color: cadetblue;
-    box-shadow: darkblue 20px 20px 20px;
-    text-align: center;
-    transition: all 0.5s;
-    border-radius: 20px;
-}
-#mainScreenSelect:hover{
-    background-color: cadetblue;
-    box-shadow: darkblue -20px -20px 20px;
-    text-align: center;
+    max-width: 100vw;
 }
 button{
-    font-size: 20px;
-    border-radius: 10px;
-    color:black;
+    font-size: 1.465201465201465vw;
+    border-radius: 0.7326007326007326vw;
+    color:aqua;
     background-color: olive;
+    padding: 5px;
     transition: all 0.5s;
 }
 button:hover{
-    font-size: 20px;
-    border-radius: 10px;
+    border-radius: 0.7326007326007326vw;
     color:olive;
-    background-color: black;
+    background-color: aqua;
 }
-#singlePlayerMode{
+#gameContainer {
     position: absolute;
-    left: 25%;
-    top: 40%;
-    box-shadow: seagreen 10px 10px 10px;
-}
-.turtlefighter{
-    position: absolute;
-    display: none;
-    height: 100px;
+    top: 0px;
     bottom: 0px;
-    transition: all 0.1s;
-}
-#turtleFighter1{
-    right: 0px;
-}
-#turtleFighter2{
     left: 0px;
-}
-.balanceBar{
-    width: 300px;
-    height: 40px;
+    right: 0px;
+    background-color: #777;
     display: none;
+}
+
+#player {
     position: absolute;
+    display: none;
+    width: 1.465201465201465vw;
+    height: 2.197802197802198vw;
 }
-.balanceBar::-webkit-meter-optimum-value {
-    background-color: green;
+#player2 {
+    position: absolute;
+    display: none;
+    width: 1.465201465201465vw;
+    height: 2.197802197802198vw;
 }
-.balanceBar::-webkit-meter-low-value {
-    background-color: red;
+#player3,#player4{
+    display: block;
+    position:absolute;
+    bottom:219.7802197802198vw;
+    right: 36630036630.03663vw;
 }
-#turtle1Balance{
+.it-circle {
+    background-color:rgba(255, 0, 0, 0.5);
+    border-radius: 1px;
+}
+.platform {
+    position: absolute;
+    background-color:rgb(175, 128, 0);
+}
+#shopbutton{
+    position: absolute;
+    right: 0.3663003663003663vw;
+    bottom: 0.3663003663003663vw;
+    border-radius: 100%;
+    margin: 0.7326007326007326vw;
+    transition: all 1.3s;
+    width: 3.6630036630036633vw;
+    height: 3.6630036630036633vw;
+}
+#shopbutton:hover{
+    transform: rotate(360deg);
+}
+#settingIcon{
+    position: absolute;
     left: 0px;
+    bottom: 0px;
+    margin: 0.7326007326007326vw;
+    width: 3.6630036630036633vw;
+    transition: all 1s;
 }
-#turtle2Balance{
-    right: 0px;
+#settingIcon:hover{
+    rotate: 360deg;
+}
+#mainMenu{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20.073260073260073vw;
+}
+#settings {
+    display: none;
+}
+#endDiv{
+    display: none;
+    z-index: 1000;
+}
+#selectCharcter {
+    display: none;
+}
+#selectCharcter2 {
+    display: none;
+}
+#selectCharcter3 {
+    display: none;
+}
+#modeSelect{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+#modeSelect> button {
+    font-size: 2vw;
+}
+/*red*/
+@keyframes red-state-defence-enter-left {
+    12.5%{background-image: url(../assets/turtle/red/\(state-defence-enter-left\)/1.png);}
+    25%{background-image: url(../assets/turtle/red/\(state-defence-enter-left\)/2.png);}
+    37.5%{background-image: url(../assets/turtle/red/\(state-defence-enter-left\)/3.png);}
+    50%{background-image: url(../assets/turtle/red/\(state-defence-enter-left\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/red/\(state-defence-enter-left\)/5.png);}
+    75%{background-image: url(../assets/turtle/red/\(state-defence-enter-left\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/red/\(state-defence-enter-left\)/7.png);}
+    100%{background-image: url(../assets/turtle/red/\(state-defence-enter-left\)/8.png);}
+}
+@keyframes red-state-defence-enter-right {
+    12.5%{background-image: url(../assets/turtle/red/\(state-defence-enter-right\)/1.png);}
+    25%{background-image: url(../assets/turtle/red/\(state-defence-enter-right\)/2.png);}
+    37.5%{background-image: url(../assets/turtle/red/\(state-defence-enter-right\)/3.png);}
+    50%{background-image: url(../assets/turtle/red/\(state-defence-enter-right\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/red/\(state-defence-enter-right\)/5.png);}
+    75%{background-image: url(../assets/turtle/red/\(state-defence-enter-right\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/red/\(state-defence-enter-right\)/7.png);}
+    100%{background-image: url(../assets/turtle/red/\(state-defence-enter-right\)/8.png);}
+}
+@keyframes red-state-defence-exit-left {
+    12.5%{background-image: url(../assets/turtle/red/\(state-defence-exit-left\)/1.png);}
+    25%{background-image: url(../assets/turtle/red/\(state-defence-exit-left\)/2.png);}
+    37.5%{background-image: url(../assets/turtle/red/\(state-defence-exit-left\)/3.png);}
+    50%{background-image: url(../assets/turtle/red/\(state-defence-exit-left\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/red/\(state-defence-exit-left\)/5.png);}
+    75%{background-image: url(../assets/turtle/red/\(state-defence-exit-left\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/red/\(state-defence-exit-left\)/7.png);}
+    100%{background-image: url(../assets/turtle/red/\(state-defence-exit-left\)/8.png);}
+}
+@keyframes red-state-defence-exit-right {
+    12.5%{background-image: url(../assets/turtle/red/\(state-defence-exit-right\)/1.png);}
+    25%{background-image: url(../assets/turtle/red/\(state-defence-exit-right\)/2.png);}
+    37.5%{background-image: url(../assets/turtle/red/\(state-defence-exit-right\)/3.png);}
+    50%{background-image: url(../assets/turtle/red/\(state-defence-exit-right\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/red/\(state-defence-exit-right\)/5.png);}
+    75%{background-image: url(../assets/turtle/red/\(state-defence-exit-right\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/red/\(state-defence-exit-right\)/7.png);}
+    100%{background-image: url(../assets/turtle/red/\(state-defence-exit-right\)/8.png);}
+}
+@keyframes red-state-moving-left {
+    0%{background-image: url(../assets/turtle/red/\(state-moving-left\)/1.png);}
+    100%{background-image: url(../assets/turtle/red/\(state-moving-left\)/2.png);} 
+}
+@keyframes red-state-moving-right {
+    0%{background-image: url(../assets/turtle/red/\(state-moving-right\)/1.png);}
+    100%{background-image: url(../assets/turtle/red/\(state-moving-right\)/2.png);}
+}
+@keyframes red-state-ready-left {
+    
+}
+@keyframes red-state-ready-right {
+    
+}
+/*box*/
+@keyframes box-state-defence-enter-left {
+    12.5%{background-image: url(../assets/turtle/box/\(state-defence-enter-left\)/1.png);}
+    25%{background-image: url(../assets/turtle/box/\(state-defence-enter-left\)/.png);}
+    37.5%{background-image: url(../assets/turtle/box/\(state-defence-enter-left\)/3.png);}
+    50%{background-image: url(../assets/turtle/box/\(state-defence-enter-left\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/box/\(state-defence-enter-left\)/5.png);}
+    75%{background-image: url(../assets/turtle/box/\(state-defence-enter-left\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/box/\(state-defence-enter-left\)/7.png);}
+    100%{background-image: url(../assets/turtle/box/\(state-defence-enter-left\)/8.png);}
+}
+@keyframes box-state-defence-enter-right {
+    12.5%{background-image: url(../assets/turtle/box/\(state-defence-enter-right\)/1.png);}
+    25%{background-image: url(../assets/turtle/box/\(state-defence-enter-right\)/.png);}
+    37.5%{background-image: url(../assets/turtle/box/\(state-defence-enter-right\)/3.png);}
+    50%{background-image: url(../assets/turtle/box/\(state-defence-enter-right\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/box/\(state-defence-enter-right\)/5.png);}
+    75%{background-image: url(../assets/turtle/box/\(state-defence-enter-right\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/box/\(state-defence-enter-right\)/7.png);}
+    100%{background-image: url(../assets/turtle/box/\(state-defence-enter-right\)/8.png);}
+}
+@keyframes box-state-defence-exit-left {
+    12.5%{background-image: url(../assets/turtle/box/\(state-defence-exit-left\)/1.png);}
+    25%{background-image: url(../assets/turtle/box/\(state-defence-exit-left\)/.png);}
+    37.5%{background-image: url(../assets/turtle/box/\(state-defence-exit-left\)/3.png);}
+    50%{background-image: url(../assets/turtle/box/\(state-defence-exit-left\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/box/\(state-defence-exit-left\)/5.png);}
+    75%{background-image: url(../assets/turtle/box/\(state-defence-exit-left\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/box/\(state-defence-exit-left\)/7.png);}
+    100%{background-image: url(../assets/turtle/box/\(state-defence-exit-left\)/8.png);}
+}
+@keyframes box-state-defence-exit-right {
+    12.5%{background-image: url(../assets/turtle/box/\(state-defence-exit-right\)/1.png);}
+    25%{background-image: url(../assets/turtle/box/\(state-defence-exit-right\)/.png);}
+    37.5%{background-image: url(../assets/turtle/box/\(state-defence-exit-right\)/3.png);}
+    50%{background-image: url(../assets/turtle/box/\(state-defence-exit-right\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/box/\(state-defence-exit-right\)/5.png);}
+    75%{background-image: url(../assets/turtle/box/\(state-defence-exit-right\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/box/\(state-defence-exit-right\)/7.png);}
+    100%{background-image: url(../assets/turtle/box/\(state-defence-exit-right\)/8.png);}
+}
+@keyframes box-state-moving-left {
+    0%{background-image: url(../assets/turtle/box/\(state-moving-left\)/1.png);}
+    100%{background-image: url(../assets/turtle/box/\(state-moving-left\)/2.png);}
+}
+@keyframes box-state-moving-right {
+    0%{background-image: url(../assets/turtle/box/\(state-moving-right\)/1.png);}
+    100%{background-image: url(../assets/turtle/box/\(state-moving-right\)/2.png);}
+}
+@keyframes box-state-ready-left {
+    
+}
+@keyframes box-state-ready-right {
+    
+}
+/*paint*/
+@keyframes paint-state-defence-enter-left {
+    12.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/1.png);}
+    25%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/.png);}
+    37.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/3.png);}
+    50%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/5.png);}
+    75%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/7.png);}
+    100%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/8.png);}
+}
+@keyframes paint-state-defence-enter-right {
+    12.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/1.png);}
+    25%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/.png);}
+    37.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/3.png);}
+    50%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/5.png);}
+    75%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/7.png);}
+    100%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/8.png);}
+}
+@keyframes paint-state-defence-exit-left {
+    12.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/1.png);}
+    25%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/.png);}
+    37.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/3.png);}
+    50%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/5.png);}
+    75%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/7.png);}
+    100%{background-image: url(../assets/turtle/paint/\(state-defence-enter-left\)/8.png);}
+}
+@keyframes paint-state-defence-exit-right {
+    12.5%{background-image: url(../assets/turtle/paint/\(state-defence-exit-right\)/1.png);}
+    25%{background-image: url(../assets/turtle/paint/\(state-defence-exit-right\)/.png);}
+    37.5%{background-image: url(../assets/turtle/paint/\(state-defence-exit-right\)/3.png);}
+    50%{background-image: url(../assets/turtle/paint/\(state-defence-exit-right\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/paint/\(state-defence-exit-right\)/5.png);}
+    75%{background-image: url(../assets/turtle/paint/\(state-defence-exit-right\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/paint/\(state-defence-exit-right\)/7.png);}
+    100%{background-image: url(../assets/turtle/paint/\(state-defence-exit-right\)/8.png);}
+}
+@keyframes paint-state-moving-left {
+    0%{background-image: url(../assets/turtle/paint/\(state-moving-left\)/1.png);}
+    100%{background-image: url(../assets/turtle/paint/\(state-moving-left\)/2.png);}
+}
+@keyframes paint-state-moving-right {
+    0%{background-image: url(../assets/turtle/paint/\(state-moving-right\)/1.png);}
+    100%{background-image: url(../assets/turtle/paint/\(state-moving-right\)/2.png);}
+}
+@keyframes paint--ready-left {
+    
+}
+@keyframes paint-state-ready-right {
+    
+}
+/*yellow*/
+@keyframes yellow-state-defence-enter-left {
+    12.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/1.png);}
+    25%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/.png);}
+    37.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/3.png);}
+    50%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/5.png);}
+    75%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/7.png);}
+    100%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/8.png);}
+}
+@keyframes yellow-state-defence-enter-right {
+    12.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/1.png);}
+    25%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/.png);}
+    37.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/3.png);}
+    50%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/5.png);}
+    75%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/7.png);}
+    100%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/8.png);}
+}
+@keyframes yellow-state-defence-exit-left {
+    12.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/1.png);}
+    25%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/.png);}
+    37.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/3.png);}
+    50%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/5.png);}
+    75%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/7.png);}
+    100%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/8.png);}
+}
+@keyframes yellow-state-defence-exit-right {
+    12.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/1.png);}
+    25%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/.png);}
+    37.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/3.png);}
+    50%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/4.png);}
+    62.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/5.png);}
+    75%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/6.png);}
+    87.5%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/7.png);}
+    100%{background-image: url(../assets/turtle/yellow/\(state-defence-enter-left\)/8.png);}
+}
+@keyframes yellow-state-moving-left {
+    0%{background-image: url(../assets/turtle/yellow/\(state-moving-left\)/1.png);}
+    100%{background-image: url(../assets/turtle/yellow/\(state-moving-left\)/2.png);}
+}
+@keyframes yellow-state-moving-right {
+    0%{background-image: url(../assets/turtle/yellow/\(state-moving-right\)/1.png);}
+    100%{background-image: url(../assets/turtle/yellow/\(state-moving-right\)/2.png);}
+}
+@keyframes yellow-state-ready-left {
+    
+}
+@keyframes yellow-state-ready-right {
+    
 }

@@ -1,0 +1,173 @@
+        @font-face {
+            font-family: 'text';
+            src: url(pixal2.ttf);
+        }
+        *{
+            font-family: 'text';
+            text-align: center;
+            animation-iteration-count: infinite;
+            animation-duration: 0.5s;
+        }
+        body{
+            background-color: blue;
+            transition: all 0.5s;
+            max-width: 100vw;
+        }
+        button{
+            font-size: 1.465201465201465vw;
+            border-radius: 0.7326007326007326vw;
+            color:aqua;
+            background-color: olive;
+            padding: 0.3663003663003663vw;
+            transition: all 0.5s;
+        }
+        button:hover{
+            border-radius: 0.7326007326007326vw;
+            color:olive;
+            background-color: aqua;
+        }
+        #gameContainer {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: #777;
+            display: none;
+        }
+
+        #player {
+            position: absolute;
+            display: none;
+            width: 1.465201465201465vw;
+            height: 2.197802197802198vw;
+            animation: state-moving-left 0.5s infinite;
+            background-size: cover;
+            transition: none;
+        }
+        #player2 {
+            position: absolute;
+            display: none;
+            width: 1.465201465201465vw;
+            height: 2.197802197802198vw;
+            background-size: cover;
+            transition: none;
+        }
+        #player3,#player4{
+            display: block;
+            position:absolute;
+            bottom:219.7802197802198vw;
+            right: 36630036630.03663vw;
+            background-size: cover;
+            transition: none;
+        }
+        .it-circle {
+            background-color:rgba(255, 0, 0, 0.5);
+            border-radius: 0.07326007326007326vw;
+        }
+        .platform {
+            position: absolute;
+            background-color:rgb(175, 128, 0);
+        }
+        #shopbutton{
+            position: absolute;
+            right: 0.3663003663003663vw;
+            bottom: 0.3663003663003663vw;
+            border-radius: 100%;
+            margin: 0.7326007326007326vw;
+            transition: all 1.3s;
+            width: 3.6630036630036633vw;
+            height: 3.6630036630036633vw;
+        }
+        #shopbutton:hover{
+            transform: rotate(360deg);
+        }
+        #settingIcon{
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            margin: 0.7326007326007326vw;
+            width: 3.6630036630036633vw;
+            transition: all 1s;
+        }
+        #settingIcon:hover{
+            rotate: 360deg;
+        }
+        #mainMenu{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20.073260073260073vw;
+        }
+        #settings {
+            display: none;
+        }
+        #endDiv{
+            display: none;
+            z-index: 1000;
+            position: absolute;
+            left: 50%;
+            top: 12vh;
+            transform: translate(-50%, -50%);
+        }
+        #selectCharcter {
+            display: none;
+        }
+        #selectCharcter2 {
+            display: none;
+        }
+        #selectCharcter3 {
+            display: none;
+        }
+        #modeSelect{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #modeSelect> button {
+            font-size: 2vw;
+        }
+        #timer{
+            position: absolute;
+            z-index: 999;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        /*red*/
+        @keyframes red-state-moving-left {
+           0%{background-image: url(../assets/turtle/red/\(state-moving-left\)/1.png);}
+           100%{background-image: url(../assets/turtle/red/\(state-moving-left\)/2.png);} 
+        }
+        @keyframes red-state-moving-right {
+            0%{background-image: url(../assets/turtle/red/\(state-moving-right\)/1.png);}
+           100%{background-image: url(../assets/turtle/red/\(state-moving-right\)/2.png);}
+        }
+        /*box*/
+        @keyframes box-state-moving-left {
+            0%{background-image: url(../assets/turtle/box/\(state-moving-left\)/1.png);}
+           100%{background-image: url(../assets/turtle/box/\(state-moving-left\)/2.png);}
+        }
+        @keyframes box-state-moving-right {
+            0%{background-image: url(../assets/turtle/box/\(state-moving-right\)/1.png);}
+           100%{background-image: url(../assets/turtle/box/\(state-moving-right\)/2.png);}
+        }
+        /*paint*/
+        @keyframes paint-state-moving-left {
+            0%{background-image: url(../assets/turtle/paint/\(state-moving-left\)/1.png);}
+           100%{background-image: url(../assets/turtle/paint/\(state-moving-left\)/2.png);}
+        }
+        @keyframes paint-state-moving-right {
+            0%{background-image: url(../assets/turtle/paint/\(state-moving-right\)/1.png);}
+           100%{background-image: url(../assets/turtle/paint/\(state-moving-right\)/2.png);}
+        }
+        /*yellow*/
+        @keyframes yellow-state-moving-left {
+            0%{background-image: url(../assets/turtle/yellow/\(state-moving-left\)/1.png);}
+           100%{background-image: url(../assets/turtle/yellow/\(state-moving-left\)/2.png);}
+        }
+        @keyframes yellow-state-moving-right {
+            0%{background-image: url(../assets/turtle/yellow/\(state-moving-right\)/1.png);}
+           100%{background-image: url(../assets/turtle/yellow/\(state-moving-right\)/2.png);}
+        }

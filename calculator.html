@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>px to vw</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #25007c;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            border: 2px solid #5900ff;
+            background-color: #0b0070;
+            color: #002fff;
+            font-size: 26px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 26px;
+            font-weight: bolder;
+            margin-left: 10px;
+            cursor: pointer;
+            background-color: #0b0070;
+            color: #002fff;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <input type="number" id="pxInput" placeholder="Enter px value">
+    <button id="convertButton" onclick="convert()">Convert to vw</button>
+    </center>
+    <script>
+        function convert(){
+            const px = document.getElementById('pxInput').value;
+            let vw;
+            vw = ((px / 1365) * 100)
+            alert(`${px}px is equal to ${vw}vw`);
+            document.getElementById('pxInput').value = '';
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,270 @@
-let Charcter1 = 'red';
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tag</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        @font-face {
+            font-family: 'text';
+            src: url(pixal2.ttf);
+        }
+        *{
+            font-family: 'text';
+            text-align: center;
+            animation-iteration-count: infinite;
+            animation-duration: 0.5s;
+        }
+        body{
+            background-color: blue;
+            transition: all 0.5s;
+            max-width: 1920px;
+        }
+        button{
+            font-size: 20px;
+            border-radius: 10px;
+            color:aqua;
+            background-color: olive;
+            padding: 5px;
+            transition: all 0.5s;
+        }
+        button:hover{
+            border-radius: 10px;
+            color:olive;
+            background-color: aqua;
+        }
+        #gameContainer {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: #777;
+            display: none;
+        }
+
+        #player {
+            position: absolute;
+            display: none;
+            width: 20px;
+            height: 30px;
+            animation: state-moving-left 0.5s infinite;
+            background-size: cover;
+            transition: none;
+        }
+        #player2 {
+            position: absolute;
+            display: none;
+            width: 20px;
+            height: 30px;
+            background-size: cover;
+            transition: none;
+        }
+        #player3,#player4{
+            display: block;
+            position:absolute;
+            bottom:3000px;
+            right: 500000000000px;
+            background-size: cover;
+            transition: none;
+        }
+        .it-circle {
+            background-color:rgba(255, 0, 0, 0.5);
+            border-radius: 1px;
+        }
+        .platform {
+            position: absolute;
+            background-color:rgb(175, 128, 0);
+        }
+        #shopbutton{
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            border-radius: 100%;
+            margin: 10px;
+            transition: all 1.3s;
+            width: 50px;
+            height: 50px;
+        }
+        #shopbutton:hover{
+            transform: rotate(360deg);
+        }
+        #settingIcon{
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            margin: 10px;
+            width: 50px;
+            transition: all 1s;
+        }
+        #settingIcon:hover{
+            rotate: 360deg;
+        }
+        #mainMenu{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 274px;
+        }
+        #settings {
+            display: none;
+        }
+        #endDiv{
+            display: none;
+            z-index: 1000;
+        }
+        #selectCharcter {
+            display: none;
+        }
+        #selectCharcter2 {
+            display: none;
+        }
+        #selectCharcter3 {
+            display: none;
+        }
+        #modeSelect{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #modeSelect> button {
+            font-size: 2vw;
+        }
+        /*red*/
+        @keyframes red-state-moving-left {
+           0%{background-image: url(../assets/turtle/red/\(state-moving-left\)/1.png);}
+           100%{background-image: url(../assets/turtle/red/\(state-moving-left\)/2.png);} 
+        }
+        @keyframes red-state-moving-right {
+            0%{background-image: url(../assets/turtle/red/\(state-moving-right\)/1.png);}
+           100%{background-image: url(../assets/turtle/red/\(state-moving-right\)/2.png);}
+        }
+        /*box*/
+        @keyframes box-state-moving-left {
+            0%{background-image: url(../assets/turtle/box/\(state-moving-left\)/1.png);}
+           100%{background-image: url(../assets/turtle/box/\(state-moving-left\)/2.png);}
+        }
+        @keyframes box-state-moving-right {
+            0%{background-image: url(../assets/turtle/box/\(state-moving-right\)/1.png);}
+           100%{background-image: url(../assets/turtle/box/\(state-moving-right\)/2.png);}
+        }
+        /*paint*/
+        @keyframes paint-state-moving-left {
+            0%{background-image: url(../assets/turtle/paint/\(state-moving-left\)/1.png);}
+           100%{background-image: url(../assets/turtle/paint/\(state-moving-left\)/2.png);}
+        }
+        @keyframes paint-state-moving-right {
+            0%{background-image: url(../assets/turtle/paint/\(state-moving-right\)/1.png);}
+           100%{background-image: url(../assets/turtle/paint/\(state-moving-right\)/2.png);}
+        }
+        /*yellow*/
+        @keyframes yellow-state-moving-left {
+            0%{background-image: url(../assets/turtle/yellow/\(state-moving-left\)/1.png);}
+           100%{background-image: url(../assets/turtle/yellow/\(state-moving-left\)/2.png);}
+        }
+        @keyframes yellow-state-moving-right {
+            0%{background-image: url(../assets/turtle/yellow/\(state-moving-right\)/1.png);}
+           100%{background-image: url(../assets/turtle/yellow/\(state-moving-right\)/2.png);}
+        }
+    </style>
+</head>
+<body id="gameScreen">
+    <input type="hidden" id="timeSet" value="60">
+<!-- Icons -->
+    <img src="assets/other/Turtle Token.png" id="shopbutton">
+    <img src="assets/other/setting icon.png" id="settingIcon" onclick="setting()">
+<!-- Menus -->
+<div id="modeSelect">
+    <br>
+    <button id="multiPlayer" onclick="multi1()">2 Player</button>
+    <br><br>
+    <button id="singlePlayer" onclick="multi2()">3 Player</button>
+    <br>
+</div>
+    <div id="gameContainer" style='background-image: url("assets/backgrounds/sky.png"); background-repeat: no-repeat;background-size: cover;'>
+        <h1 id="timer">0</h1>
+        <div id="endDiv">
+            <h1 id="h1 end"></h1>
+            <h2 id="h2 end"></h2>
+            <!--<button id="backToMain" onclick="">Back to main menu</button>-->
+            <button id="backToMain" onclick="window.location.reload()">Back to main menu</button>
+            <button id="playAgain" onclick="startGame()">Play again</button>
+        </div>
+        <div style="width: 38px;height: 26px;" id="player" ></div>
+        <div style="width: 38px;height: 26px;" id="player2" class="it-circle"></div>
+        <div style="width: 38px;height: 26px;" id="player3"></div>
+        <div style="width: 38px;height: 26px;" id="player4"></div>
+    </div>
+    <!-- Settings Menu -->
+    <div id="settings" style="display: none;">
+        <h3>Volume</h3>
+        <br>
+        <input type="range" id="slider" value="100" max="100" min="0" onchange="volume()">
+        <br>
+        <h3>Theme</h3>
+        <select name="theme" id="theme" onchange="changeTheme()">
+            <option value="light">light</option>
+            <option value="dark">dark</option>
+        </select>
+        <br>
+        <div id="keyBindings" style="display: none;">
+            <h3>Key Bindings</h3>
+            <p>Player 1: <span id="player1">W</span> <button onclick="rebindKey('player1')">Change</button></p>
+            <p>Player 2: <span id="player2">ArrowRight</span> <button onclick="rebindKey('player2')">Change</button></p>
+            <p>Player 3: <span id="player3">J</span> <button onclick="rebindKey('player3')">Change</button></p>
+        </div>
+        <h3>Extras</h3>
+        <input type="checkbox" name="onlineTimeSaver" id="onlineTimeSaver"><label for="onlineTimeSaver">Save PB online</label>
+        <br><br>
+        <input type="checkbox" name="fpsonoff" id="fpsonoff" onchange="updateFPS()"><label for="fpsonoff">FPS Counter</label>
+        <h4 id="fpsCounter" style="display: none;">FPS: 0</h4>
+        <select onchange="document.getElementById('timeSet').value = this.value" id="timeSelect">
+            <option value="60">60sec/1min</option>
+            <option value="120">120sec/2min</option>
+            <option value="180">180sec/3min</option>
+            <option value="240">240sec/4min</option>
+        </select>
+        <!--<select id="changeBackground" onchange="changeBackground(this.value)">
+            <option value="sky">Sky</option>
+            <option value="foerst">Forest</option>
+            <option value="pond">Pond</option>
+        </select> -->
+    </div>
+
+    <!-- Character Select Menu -->
+    <div id="selectCharcter" style="display: none;">
+        <br><br><br>
+        <br>
+        <div id="selectCharcter1">
+            <button onclick="select3()"><</button>
+            <img src="assets/turtle/red/(state-ready-right).png" id="img2">
+            <button onclick="select4()">></button>
+            <br>
+            <h3>Player 1 <br> <img src="assets/other/wad.png"width="120"></h3>
+            <button id="submit1" onclick="Submit1()">Submit</button>
+        </div>
+        <div id="selectCharcter2" style="display: none;">
+            <button onclick="select1()"><</button>
+            <img src="assets/turtle/red/(state-ready-left).png" id="img1">
+            <button onclick="select2()">></button>
+            <br>
+            <h3>Player 2 <br> <img src="assets/other/←↑→.png"width="120"></h3>
+            <button id="submit2" onclick="Submit2()">Submit</button>
+        </div>
+        <div id="selectCharcter3" style="display: none;">
+            <button onclick="select5()"><</button>
+            <img src="assets/turtle/red/(state-ready-left).png" id="img3">
+            <button onclick="select6()">></button>
+            <br>
+            <h3>Player 3 <br> <img src="assets/other/ijl.png"width="120"></h3>
+            <button id="submit3" onclick="Submit3()">Submit</button>
+        </div>
+    </div>
+    <audio src="sounds/songs/Racing mode.mp3" id="audio"></audio>
+    <script>
+        let Charcter1 = 'red';
 let Charcter2 = 'red';
 let Charcter3 = 'red';
 const img1 = document.getElementById('img1');
@@ -19,73 +285,73 @@ document.getElementById('player2').style.display = "block";
 document.getElementById('player3').style.display = "block";
 setInterval(spawnPowerups,5000/*30000*/)
 const player = {
-    x: 21.978021978021978,
-    y: 3.6630036630036633,
-    width: 2.783882783882784,
-    height: 1.9047619047619049,
-    speed: 0.21978021978021978,
+    x: 300,
+    y: 50,
+    width: 38,
+    height: 26,
+    speed: 3,
     velocityY: 0,
-    gravity: -0.021978021978021976,
+    gravity: -0.3,
     jumping: false,
     jumping2: false,
     it: false,
     Powerup:[]
 };
 const player2 = {
-    x: 3.6630036630036633,
-    y: 3.6630036630036633,
-    width: 2.783882783882784,
-    height: 1.9047619047619049,
-    speed: 0.21978021978021978,
+    x: 50,
+    y: 50,
+    width: 38,
+    height: 26,
+    speed: 3,
     velocityY: 0,
-    gravity: -0.021978021978021976,
+    gravity: -0.3,
     jumping: false,
     jumping2: false,
     it: true,
     Powerup:[]
 };
 const player3 = {
-    x: 36.630036630036633,
-    y: 3.6630036630036633,
-    width: 2.783882783882784,
-    height: 1.9047619047619049,
-    speed: 0.21978021978021978,
+    x: 500,
+    y: 50,
+    width: 38,
+    height: 26,
+    speed: 3,
     velocityY: 0,
-    gravity: -0.021978021978021976,
+    gravity: -0.3,
     jumping: false,
     jumping2: false,
     it: false,
     Powerup:[]
 };
 const player4 = {
-    x: 29.304029304029307,
-    y: 3.6630036630036633,
-    width: 2.783882783882784,
-    height: 1.9047619047619049,
-    speed: 0.21978021978021978,
+    x: 400,
+    y: 50,
+    width: 38,
+    height: 26,
+    speed: 3,
     velocityY: 0,
-    gravity: -0.021978021978021976,
+    gravity: -0.3,
     jumping: false,
     jumping2: false,
     it: true,
     Powerup:[]
 };
 let platforms = [
-    { x:0,y:0,width:100,height:1.465201465201465},//This is the ground ***DON"T CHANGE THE ORDER***
-    { x:0,y:7.326007326007327,width:14.652014652014653,height:1.611721611721612},
-    { x:21.978021978021978,y:36.63003663003663,width:14.652014652014653,height:1.611721611721612},
-    { x:36.63003663003663,y:29.304029304029307,width:14.652014652014653,height:1.611721611721612},
-    { x:0,y:21.978021978021978,width:14.652014652014653,height:1.611721611721612},
-    { x:21.978021978021978,y:21.978021978021978,width:14.652014652014653,height:1.611721611721612},
-    { x:14.652014652014653,y:14.652014652014653,width:29.304029304029307,height:1.611721611721612},
-    { x:65.93406593406593,y:36.63003663003663,width:14.652014652014653,height:1.611721611721612},
-    { x:51.28205128205128,y:21.978021978021978,width:36.63003663003663,height:1.611721611721612},
-    { x:73.26007326007326,y:14.652014652014653,width:14.652014652014653,height:1.611721611721612},
-    { x:80.58608058608058,y:29.304029304029307,width:14.652014652014653,height:1.611721611721612},
-    { x:73.26007326007326,y:43.956043956043956,width:14.652014652014653,height:1.611721611721612},
-    { x:36.63003663003663,y:43.956043956043956,width:14.652014652014653,height:1.611721611721612},
-    { x:59.60805860805861,y:43.956073575742097,width:4.652014652014653,height:1.611721611721612},
-    { x:36.63003663003663,y:7.326007326007327,width:14.652014652014653,height:1.611721611721612}
+    { x:0,y:0,width:1365,height:20},//This is the ground ***DON"T CHANGE THE ORDER***
+    { x:0,y:100,width:200,height:22},
+    { x:300,y:500,width:200,height:22},
+    { x:500,y:400,width:200,height:22},
+    { x:0,y:300,width:200,height:22},
+    { x:300,y:300,width:200,height:22},
+    { x:200,y:200,width:400,height:22},
+    { x:900,y:500,width:200,height:22},
+    { x:700,y:300,width:500,height:22},
+    { x:1000,y:200,width:200,height:22},
+    { x:1100,y:400,width:200,height:22},
+    { x:1000,y:600,width:200,height:22},
+    { x:500,y:600,width:200,height:22},
+    { x:800,y:700,width:200,height:22},
+    { x:500,y:100,width:200,height:22}
 ];
 const PowerupsOnScreen = []
 setInterval(TimerCheck,1000)
@@ -152,16 +418,16 @@ function gameLoop() {
     //jumping
     if (keys['ArrowUp'] && player.jumping == false && player.speed != 0) {
             player.jumping = true;
-            player.velocityY = 0.6593406593406593;
+            player.velocityY = 9;
 
     }
     if((keys['w']|| keys['W']) && player2.jumping == false && player2.speed != 0){
             player2.jumping = true;
-            player2.velocityY = 0.6593406593406593;
+            player2.velocityY = 9;
     }
     if((keys['i']|| keys['I']) && player3.jumping == false && player3.speed != 0){
             player3.jumping = true;
-            player3.velocityY = 0.6593406593406593;
+            player3.velocityY = 9;
     }
     player.velocityY += player.gravity;
     player.y += player.velocityY;
@@ -254,16 +520,16 @@ function gameLoop() {
                 }else{
                     player.Powerup.push(powerup);
                 }
-                player.speed += 0.07326007326007326;
+                player.speed += 1;
             } else if (powerup.type == 'jump.gif') {
-                player.velocityY += 1.465201465201465;
+                player.velocityY += 20;
             } else if (powerup.type == 'gravity.gif') {
                 if(player.Powerup.includes('gravity.gif')){
                     player.Powerup.indexOf('gravity.gif').time += 10;
                 }else{
                     player.Powerup.push(powerup);
                 }
-                player.gravity = -0.014652014652014652;
+                player.gravity = -0.2;
             } else if (powerup.type == 'auto-switch.gif') {
                 if (player.it == true) {
                     player.it = false;
@@ -272,6 +538,7 @@ function gameLoop() {
                         player2.it = true;
                         playerDiv2.classList.add('it-circle');
                     } else if (multimode == '3') {
+                        
                         if (Math.floor(Math.random() * 2) == 1) {
                             player2.it = true;
                             playerDiv2.classList.add('it-circle');
@@ -281,9 +548,10 @@ function gameLoop() {
                         }
                     }
                 }
+                    player.Powerup.push(powerup);
             } else if (powerup.type == 'teleport.gif') {
-                player.x = Math.floor(Math.random() * 100);
-                player.y = Math.floor(Math.random() * 56.26373626373626);
+                player.x = Math.floor(Math.random() * 1365);
+                player.y = Math.floor(Math.random() * 768);
             } else if (powerup.type == 'freeze.gif') {
                 if(player.Powerup.includes('freeze.gif')){
                     player.Powerup.indexOf('freeze.gif').time += 10;
@@ -299,26 +567,25 @@ function gameLoop() {
                     player.Powerup.push(powerup);
                 }
                 playerDiv.style.opacity = 0.5;
-            }
-            else if (powerup.type == 'growing.gif') {
+            } else if (powerup.type == 'growing.gif') {
                 if(player.Powerup.includes('growing.gif')){
                     player.Powerup.indexOf('growing.gif').time += 10;
                 }else{
                     player.Powerup.push(powerup);
                 }
-                if(player.width == 1.3186813186813187){
-                    playerDiv.style.width =2.783882783882784 +'vw';
-                    playerDiv.style.height = 1.9047619047619049+'vw';
-                    player.width = 2.783882783882784;
-                    player.height = 1.9047619047619049;
-                    playerDiv.style.backgroundSize = '2.783882783882784vw 1.9047619047619049vw'
+                if(player.width == 18){
+                    playerDiv.style.width = 38+'px';
+                    playerDiv.style.height = 26+'px';
+                    player.width = 38;
+                    player.height = 26;
+                    playerDiv.style.backgroundSize = '38px 26px'
                 }
                 else if (player.width < 100) {
-                    playerDiv.style.width = player.width + 2.783882783882784 + 'vw';
-                    playerDiv.style.height = player.height + 1.9047619047619049 + 'vw'; 
-                    player.width += 2.783882783882784;
-                    player.height += 1.9047619047619049;
-                    playerDiv.style.backgroundSize = player.width + 'vw ' + player.height + 'vw';
+                    playerDiv.style.width = player.width + 38 + 'px';
+                    playerDiv.style.height = player.height + 26 + 'px'; 
+                    player.width += 38;
+                    player.height += 26;
+                    playerDiv.style.backgroundSize = player.width + 'px ' + player.height + 'px';
                 }
             } else if (powerup.type == 'shrinking.gif') {
                 if(player.Powerup.includes('shrinking.gif')){
@@ -326,26 +593,25 @@ function gameLoop() {
                 }else{
                     player.Powerup.push(powerup);
                 }
-                if(player.width == 2.783882783882784){
-                    playerDiv.style.width = 1.3186813186813187+'vw';
-                    playerDiv.style.height = 0.9523809523809524+'vw';
-                    player.width = 1.3186813186813187;
-                    player.height = 0.9523809523809524;
-                    playerDiv.style.backgroundSize = '1.3186813186813187vw 0.9523809523809524vw'
+                if (player.width > 38) {
+                    playerDiv.style.width = player.width - 38 + 'px';
+                    playerDiv.style.height = player.height - 26 + 'px';
+                    player.width -= 38;
+                    player.height -= 26;
+                    playerDiv.style.backgroundSize = player.width + 'px ' + player.height + 'px';
                 }
-                else if (player.width > 2.783882783882784) {
-                    playerDiv.style.width = player.width - 2.783882783882784 + 'vw';
-                    playerDiv.style.height = player.height - 1.9047619047619049 + 'vw';
-                    player.width -= 2.783882783882784;
-                    player.height -= 1.9047619047619049;
-                    playerDiv.style.backgroundSize = player.width + 'vw ' + player.height + 'vw';
+                else if(player.width == 38){
+                    playerDiv.style.width = 18+'px';
+                    playerDiv.style.height = 13+'px';
+                    player.width = 18;
+                    player.height = 13;
+                    playerDiv.style.backgroundSize = '18px 13px'
                 }
             }else if(powerup.type == 'time+.gif'){
                 timer.textContent = parseInt(timer.textContent) + 10;
             }else if(powerup.type == 'time-.gif'){
                 timer.textContent = parseInt(timer.textContent) - 10;
             }
-            player.Powerup.push(powerup)
             document.getElementById(powerup.id).remove();
             PowerupsOnScreen.splice(PowerupsOnScreen.indexOf(powerup), 1);
         }
@@ -356,16 +622,16 @@ function gameLoop() {
                 }else{
                     player2.Powerup.push(powerup);
                 }
-                player2.speed += 0.07326007326007326;
+                player2.speed += 1;
             } else if (powerup.type == 'jump.gif') {
-                player2.velocityY += 1.465201465201465;
+                player2.velocityY += 20;
             } else if (powerup.type == 'gravity.gif') {
                 if(player2.Powerup.includes('gravity.gif')){
                     player2.Powerup.indexOf('gravity.gif').time += 10;
                 }else{
                     player2.Powerup.push(powerup);
                 }
-                player2.gravity = -0.014652014652014652;
+                player2.gravity = -0.2;
             } else if (powerup.type == 'auto-switch.gif') {
                 if (player2.it == true) {
                     player2.it = false;
@@ -384,8 +650,8 @@ function gameLoop() {
                     }
                 }
             } else if (powerup.type == 'teleport.gif') {
-                player2.x = Math.floor(Math.random() * 100);
-                player2.y = Math.floor(Math.random() * 56.26373626373626);
+                player2.x = Math.floor(Math.random() * 1365);
+                player2.y = Math.floor(Math.random() * 768);
             } else if (powerup.type == 'freeze.gif') {
                 if(player2.Powerup.includes('freeze.gif')){
                     player2.Powerup.indexOf('freeze.gif').time += 10;
@@ -394,6 +660,7 @@ function gameLoop() {
                 }
                 player.speed = 0;
                 player3.speed = 0;
+
             } else if (powerup.type == 'invisibility.gif') {
                 if(player2.Powerup.includes('invisibility.gif')){
                     player2.Powerup.indexOf('invisibility.gif').time += 10;
@@ -408,19 +675,19 @@ function gameLoop() {
                 }else{
                     player2.Powerup.push(powerup);
                 }
-                if(player2.width == 1.3186813186813187){
-                    playerDiv2.style.width =2.783882783882784 +'vw';
-                    playerDiv2.style.height = 1.9047619047619049+'vw';
-                    player2.width = 2.783882783882784;
-                    player2.height = 1.9047619047619049;
-                    playerDiv2.style.backgroundSize = '2.783882783882784vw 1.9047619047619049vw'
+                if(player2.width == 18){
+                    playerDiv2.style.width = 38+'px';
+                    playerDiv2.style.height = 26+'px';
+                    player2.width = 38;
+                    player2.height = 26;
+                    playerDiv2.style.backgroundSize = '38px 26px'
                 }
                 else if (player2.width < 100) {
-                    playerDiv2.style.width = player2.width + 2.783882783882784 + 'vw';
-                    playerDiv2.style.height = player2.height + 1.9047619047619049 + 'vw'; 
-                    player2.width += 2.783882783882784;
-                    player2.height += 1.9047619047619049;
-                    playerDiv2.style.backgroundSize = player2.width + 'vw ' + player2.height + 'vw';
+                    playerDiv2.style.width = player2.width + 38 + 'px';
+                    playerDiv2.style.height = player2.height + 26 + 'px'; 
+                    player2.width += 38;
+                    player2.height += 26;
+                    playerDiv2.style.backgroundSize = player2.width + 'px ' + player2.height + 'px';
                 }
             } else if (powerup.type == 'shrinking.gif') {
                 if(player2.Powerup.includes('shrinking.gif')){
@@ -428,19 +695,19 @@ function gameLoop() {
                 }else{
                     player2.Powerup.push(powerup);
                 }
-                if(player2.width == 2.783882783882784){
-                    playerDiv2.style.width = 1.3186813186813187+'vw';
-                    playerDiv2.style.height = 0.9523809523809524+'vw';
-                    player2.width = 1.3186813186813187;
-                    player2.height = 0.9523809523809524;
-                    playerDiv2.style.backgroundSize = '1.3186813186813187vw 0.9523809523809524vw'
+                if(player2.width == 38){
+                    playerDiv2.style.width = 18+'px';
+                    playerDiv2.style.height = 13+'px';
+                    player2.width = 18;
+                    player2.height = 13;
+                    playerDiv2.style.backgroundSize = '18px 13px'
                 }
-                else if (player2.width > 2.783882783882784) {
-                    playerDiv2.style.width = player2.width - 2.783882783882784 + 'vw';
-                    playerDiv2.style.height = player2.height - 1.9047619047619049 + 'vw';
-                    player2.width -= 2.783882783882784;
-                    player2.height -= 1.9047619047619049;
-                    playerDiv2.style.backgroundSize = player2.width + 'vw ' + player2.height + 'vw';
+                else if (player2.width > 38) {
+                    playerDiv2.style.width = player2.width - 38 + 'px';
+                    playerDiv2.style.height = player2.height - 26 + 'px';
+                    player2.width -= 38;
+                    player2.height -= 26;
+                    playerDiv2.style.backgroundSize = player2.width + 'px ' + player2.height + 'px';
                 }
             }else if(powerup.type == 'time+.gif'){
                 timer.textContent = parseInt(timer.textContent) + 10;
@@ -458,16 +725,16 @@ function gameLoop() {
                 }else{
                     player3.Powerup.push(powerup);
                 }
-                player3.speed += 0.07326007326007326;
+                player3.speed += 1;
             } else if (powerup.type == 'jump.gif') {
-                player3.velocityY += 1.465201465201465;
+                player3.velocityY += 20;
             } else if (powerup.type == 'gravity.gif') {
                 if(player3.Powerup.includes('gravity.gif')){
                     player3.Powerup.indexOf('gravity.gif').time += 10;
                 }else{
                     player3.Powerup.push(powerup);
                 }
-                player3.gravity = -0.014652014652014652;
+                player3.gravity = -0.2;
             } else if (powerup.type == 'auto-switch.gif') {
                 if (player3.it == true) {
                     player3.it = false;
@@ -486,8 +753,8 @@ function gameLoop() {
                     }
                 }
             } else if (powerup.type == 'teleport.gif') {
-                player3.x = Math.floor(Math.random() * 100);
-                player3.y = Math.floor(Math.random() * 56.26373626373626);
+                player3.x = Math.floor(Math.random() * 1365);
+                player3.y = Math.floor(Math.random() * 768);
             } else if (powerup.type == 'freeze.gif') {
                 if(player3.Powerup.includes('freeze.gif')){
                     player3.Powerup.indexOf('freeze.gif').time += 10;
@@ -509,19 +776,19 @@ function gameLoop() {
                 }else{
                     player3.Powerup.push(powerup);
                 }
-                if(player3.width == 1.3186813186813187){
-                    playerDiv2.style.width = 2.783882783882784+'vw';
-                    playerDiv2.style.height = 1.9047619047619049+'vw';
-                    player2.width = 2.783882783882784;
-                    player2.height = 1.9047619047619049;
-                    playerDiv2.style.backgroundSize = '2.783882783882784vw 1.9047619047619049vw'
+                if(player2.width == 18){
+                    playerDiv2.style.width = 38+'px';
+                    playerDiv2.style.height = 26+'px';
+                    player2.width = 38;
+                    player2.height = 26;
+                    playerDiv2.style.backgroundSize = '38px 26px'
                 }
                 else if (player3.width < 100) {
-                    playerDiv3.style.width = player3.width + 2.783882783882784 + 'vw';
-                    playerDiv3.style.height = player3.height + 1.9047619047619049 + 'vw'; 
-                    player3.width += 2.783882783882784;
-                    player3.height += 1.9047619047619049;
-                    playerDiv3.style.backgroundSize = player3.width + 'vw ' + player3.height + 'vw';
+                    playerDiv3.style.width = player3.width + 38 + 'px';
+                    playerDiv3.style.height = player3.height + 26 + 'px'; 
+                    player3.width += 38;
+                    player3.height += 26;
+                    playerDiv3.style.backgroundSize = player3.width + 'px ' + player3.height + 'px';
                 }
             } else if (powerup.type == 'shrinking.gif') {
                 if(player3.Powerup.includes('shrinking.gif')){
@@ -529,18 +796,18 @@ function gameLoop() {
                 }else{
                     player3.Powerup.push(powerup);
                 }
-                if (player3.width > 2.783882783882784) {
-                    playerDiv3.style.width = player3.width - 2.783882783882784 + 'vw';
-                    playerDiv3.style.height = player3.height - 1.9047619047619049 + 'vw';
-                    player3.width -= 2.783882783882784;
-                    player3.height -= 1.9047619047619049;
-                    playerDiv3.style.backgroundSize = player3.width + 'vw ' + player3.height + 'vw';
-                }else if(player3.width == 2.783882783882784){
-                    playerDiv3.style.width = 1.3186813186813187+'vw';
-                    playerDiv3.style.height = 0.9523809523809524+'vw';
-                    player3.width = 1.3186813186813187;
-                    player3.height = 0.9523809523809524;
-                    playerDiv3.style.backgroundSize = '1.3186813186813187vw 0.9523809523809524vw'
+                if (player3.width > 38) {
+                    playerDiv3.style.width = player3.width - 38 + 'px';
+                    playerDiv3.style.height = player3.height - 26 + 'px';
+                    player3.width -= 38;
+                    player3.height -= 26;
+                    playerDiv3.style.backgroundSize = player3.width + 'px ' + player3.height + 'px';
+                }else if(player3.width == 38){
+                    playerDiv3.style.width = 18+'px';
+                    playerDiv3.style.height = 13+'px';
+                    player3.width = 18;
+                    player3.height = 13;
+                    playerDiv3.style.backgroundSize = '18px 13px'
                 }
             }else if(powerup.type == 'time+.gif'){
                 timer.textContent = parseInt(timer.textContent) + 10;
@@ -555,27 +822,27 @@ function gameLoop() {
     if (player.x < 0) {
         player.x = 0;
     }
-    if (player.x + player.width > 100) {
-        player.x = 100 - player.width;
+    if (player.x + player.width > 1365) {
+        player.x = 1365 - player.width;
     }
     if (player2.x < 0) {
         player2.x = 0;
     }
-    if (player2.x + player2.width > 100) {
-        player2.x = 100 - player2.width;
+    if (player2.x + player2.width > 1365) {
+        player2.x = 1365 - player2.width;
     }
     if (player3.x < 0) {
         player3.x = 0;
     }
-    if (player3.x + player3.width > 100) {
-        player3.x = 100 - player3.width;
+    if (player3.x + player3.width > 1365) {
+        player3.x = 1365 - player3.width;
     }
-    playerDiv.style.left = player.x + 'vw';
-    playerDiv.style.bottom = player.y + 'vw';
-    playerDiv2.style.left = player2.x + 'vw';
-    playerDiv2.style.bottom = player2.y + 'vw';
-    playerDiv3.style.left = player3.x + 'vw';
-    playerDiv3.style.bottom = player3.y + 'vw';
+    playerDiv.style.left = player.x + 'px';
+    playerDiv.style.bottom = player.y + 'px';
+    playerDiv2.style.left = player2.x + 'px';
+    playerDiv2.style.bottom = player2.y + 'px';
+    playerDiv3.style.left = player3.x + 'px';
+    playerDiv3.style.bottom = player3.y + 'px';
     requestAnimationFrame(gameLoop);
 }
 }
@@ -607,30 +874,26 @@ function TimerCheck(){
             } else if(playerDiv3.className == 'it-circle'){
                 document.getElementById('h1 end').innerHTML = 'player 3 lost'
             }
-            else{
-                document.getElementById('h1 end').innerHTML = 'no one won'
-            }
-            timer.textContent = '';
         }
     }
 }
 function spawnPowerups(NewPowerup,PlatformNumber){
     if(started){
         PlatformNumber = platforms[Math.floor(Math.random() * platforms.length)];
-        NewPowerup = {x:null, y:null, width:1.8315018315018317, height:1.8315018315018317, type: null, id:`powerup${powerupcount}`,time:10};
+        NewPowerup = {x:null, y:null, width:25, height:25, type: null, id:`powerup${powerupcount}`,time:10};
         NewPowerup.x = Math.floor(Math.random() * (PlatformNumber.width - NewPowerup.width)) + PlatformNumber.x;
-        NewPowerup.y = PlatformNumber.y+1.465201465201465;
+        NewPowerup.y = PlatformNumber.y+20;
         NewPowerup.type = PowerupTypes[Math.floor(Math.random() * PowerupTypes.length)];
         PowerupsOnScreen.push(NewPowerup);
         const powerupDiv = document.createElement('div');
-        powerupDiv.style.borderRadius = '7.326007326007327vw';
+        powerupDiv.style.borderRadius = '100px';
         powerupDiv.style.backgroundImage = `url("assets/other/power ups/${NewPowerup.type}")`;
         powerupDiv.style.position = 'absolute';
-        powerupDiv.style.width = '1.8315018315018317vw';
-        powerupDiv.style.height = '1.8315018315018317vw';
-        powerupDiv.style.left = NewPowerup.x + 'vw';
-        powerupDiv.style.bottom = NewPowerup.y + 'vw';
-        powerupDiv.style.backgroundSize = '1.8315018315018317vw 1.8315018315018317vw';
+        powerupDiv.style.width = '25px';
+        powerupDiv.style.height = '25px';
+        powerupDiv.style.left = NewPowerup.x + 'px';
+        powerupDiv.style.bottom = NewPowerup.y + 'px';
+        powerupDiv.style.backgroundSize = '25px 25px';
         powerupDiv.id = NewPowerup.id;
         gameContainer.appendChild(powerupDiv);
         powerupcount++;
@@ -639,8 +902,8 @@ function createPlatforms() {
     platforms.forEach(platform => {
         const platformDiv = document.createElement('div');
         platformDiv.classList.add('platform');
-        platformDiv.style.bottom = platform.y + 'vw';
-        platformDiv.style.height = platform.height + 'vw';
+        platformDiv.style.bottom = platform.y + 'px';
+        platformDiv.style.height = platform.height + 'px';
         if (platformCount == 0) {
             if(gameContainer.style.backgroundImage == 'url("assets/backgrounds/sky.png")'){
                 platformDiv.style.backgroundImage = 'url("assets/other/cloud.png")';
@@ -663,8 +926,8 @@ function createPlatforms() {
             else if(gameContainer.style.backgroundImage == 'url("assets/backgrounds/forest.png")'){
                 platformDiv.style.background = 'url("assets/other/wood.png")'
             }    
-            platformDiv.style.left = platform.x + 'vw';
-            platformDiv.style.width = platform.width + 'vw'; 
+            platformDiv.style.left = platform.x + 'px';
+            platformDiv.style.width = platform.width + 'px'; 
         }
         if(platformCount == 14){
             platformCount = 0;
@@ -680,26 +943,26 @@ function powerDown() {
             powerup.time -= 1;
         } else if (powerup.time == 0) {
             if (powerup.type == 'speed.gif') {
-                player.speed = 0.21978021978021978;
+                player.speed = 3;
             } else if (powerup.type == 'gravity.gif') {
-                player.gravity = -0.021978021978021978;
+                player.gravity = -0.3;
             } else if (powerup.type == 'invisibility.gif') {
                 playerDiv.style.opacity = 1;
-            } else if (powerup.type == 'growing.gif' && player.width > 2.783882783882784) {
-                playerDiv.style.width = '2.783882783882784vw';
-                playerDiv.style.height = '1.9047619047619049vw';
-                player.width = 2.783882783882784;
-                player.height = 1.9047619047619049;
-                playerDiv.style.backgroundSize = '2.783882783882784vw 1.9047619047619049vw';
-            } else if (powerup.type == 'shrinking.gif' && player.width < 2.783882783882784) {
-                playerDiv.style.width = '2.783882783882784vw';
-                playerDiv.style.height = '1.9047619047619049vw';
-                player.width = 2.783882783882784;
-                player.height = 1.9047619047619049;
-                playerDiv.style.backgroundSize = '2.783882783882784vw 1.9047619047619049vw';
+            } else if (powerup.type == 'growing.gif' && player.width > 38) {
+                playerDiv.style.width = '38px';
+                playerDiv.style.height = '26px';
+                player.width = 38;
+                player.height = 26;
+                playerDiv.style.backgroundSize = '38px 26px';
+            } else if (powerup.type == 'shrinking.gif' && player.width < 38) {
+                playerDiv.style.width = '38px';
+                playerDiv.style.height = '26px';
+                player.width = 38;
+                player.height = 26;
+                playerDiv.style.backgroundSize = '38px 26px';
             } else if (powerup.type == 'freeze.gif') {
-                player2.speed = 0.21978021978021978;
-                player3.speed = 0.21978021978021978;
+                player2.speed = 3;
+                player3.speed = 3;
             }
             player.Powerup.splice(player.Powerup.indexOf(powerup), 1);
         }
@@ -709,26 +972,30 @@ function powerDown() {
             powerup.time -= 1;
         } else if (powerup.time == 0) {
             if (powerup.type == 'speed.gif') {
-                player2.speed = 0.21978021978021978;
+                player2.speed = 3;
             } else if (powerup.type == 'gravity.gif') {
-                player2.gravity = -0.021978021978021978;
+                player2.gravity = -0.3;
             } else if (powerup.type == 'invisibility.gif') {
                 playerDiv2.style.opacity = 1;
-            } else if (powerup.type == 'growing.gif' && player2.width > 2.783882783882784) {
-                playerDiv2.style.width = '2.783882783882784vw';
-                playerDiv2.style.height = '1.9047619047619049vw';
-                player2.width = 2.783882783882784;
-                player2.height = 1.9047619047619049;
-                playerDiv2.style.backgroundSize = '2.783882783882784vw 1.9047619047619049vw';
-            } else if (powerup.type == 'shrinking.gif' && player2.width < 2.783882783882784) {
-                playerDiv2.style.width = '2.783882783882784vw';
-                playerDiv2.style.height = '1.9047619047619049vw';
-                player2.width = 2.783882783882784;
-                player2.height = 1.9047619047619049;
-                playerDiv2.style.backgroundSize = '2.783882783882784vw 1.9047619047619049vw';
+            } else if (powerup.type == 'growing.gif') {
+                if (player2.width > 38) {
+                    playerDiv2.style.width = '38px';
+                    playerDiv2.style.height = '26px';
+                    player2.width = 38;
+                    player2.height = 26;
+                    playerDiv2.style.backgroundSize = '38px 26px';
+                }
+            } else if (powerup.type == 'shrinking.gif') {
+                if (player2.width < 38) {
+                    playerDiv2.style.width = '38px';
+                    playerDiv2.style.height = '26px';
+                    player2.width = 38;
+                    player2.height = 26;
+                    playerDiv2.style.backgroundSize = '38px 26px';
+                }
             } else if (powerup.type == 'freeze.gif') {
-                player3.speed = 0.21978021978021978;
-                player.speed = 0.21978021978021978;
+                player.speed = 3;
+                player3.speed = 3;
             }
             player2.Powerup.splice(player2.Powerup.indexOf(powerup), 1);
         }
@@ -738,26 +1005,26 @@ function powerDown() {
             powerup.time -= 1;
         } else if (powerup.time == 0) {
             if (powerup.type == 'speed.gif') {
-                player3.speed = 0.21978021978021978;
+                player3.speed = 3;
             } else if (powerup.type == 'gravity.gif') {
-                player3.gravity = -0.021978021978021978;
+                player3.gravity = -0.3;
             } else if (powerup.type == 'invisibility.gif') {
                 playerDiv3.style.opacity = 1;
-            } else if (powerup.type == 'growing.gif' && player3.width > 2.783882783882784) {
-                playerDiv3.style.width = '2.783882783882784vw';
-                playerDiv3.style.height = '1.9047619047619049vw';
-                player3.width = 2.783882783882784;
-                player3.height = 1.9047619047619049;
-                playerDiv3.style.backgroundSize = '2.783882783882784vw 1.9047619047619049vw';
-            } else if (powerup.type == 'shrinking.gif' && player3.width < 2.783882783882784) {
-                playerDiv3.style.width = '2.783882783882784vw';
-                playerDiv3.style.height = '1.9047619047619049vw';
-                player3.width = 2.783882783882784;
-                player3.height = 1.9047619047619049;
-                playerDiv3.style.backgroundSize = '2.783882783882784vw 1.9047619047619049vw';
+            } else if (powerup.type == 'growing.gif' && player3.width > 38) {
+                playerDiv3.style.width = '38px';
+                playerDiv3.style.height = '26px';
+                player3.width = 38;
+                player3.height = 26;
+                playerDiv3.style.backgroundSize = '38px 26px';
+            } else if (powerup.type == 'shrinking.gif' && player3.width < 38) {
+                playerDiv3.style.width = '38px';
+                playerDiv3.style.height = '26px';
+                player3.width = 38;
+                player3.height = 26;
+                playerDiv3.style.backgroundSize = '38px 26px';
             } else if (powerup.type == 'freeze.gif') {
-                player2.speed = 0.21978021978021978;
-                player.speed = 0.21978021978021978;
+                player2.speed = 3;
+                player.speed = 3;
             }
             player3.Powerup.splice(player3.Powerup.indexOf(powerup), 1);
         }
@@ -773,31 +1040,31 @@ function startGame() {
     playerDiv.style.backgroundImage = `url("assets/turtle/${Charcter1}/(state-ready-left).png")`;
     playerDiv2.style.backgroundImage = `url("assets/turtle/${Charcter2}/(state-ready-left).png")`;
     playerDiv3.style.backgroundImage = `url("assets/turtle/${Charcter3}/(state-ready-left).png")`;
-    playerDiv.style.backgroundSize = "2.783882783882784vw 1.9047619047619049vw";
-    playerDiv2.style.backgroundSize = "2.783882783882784vw 1.9047619047619049vw";
-    playerDiv3.style.backgroundSize = "2.783882783882784vw 1.9047619047619049vw";
-    playerDiv.style.width = "2.783882783882784vw";
-    playerDiv2.style.width = "2.783882783882784vw";
-    playerDiv3.style.width = "2.783882783882784vw";
-    playerDiv.style.height = "1.9047619047619049vw";
-    playerDiv2.style.height = "1.9047619047619049vw";
-    playerDiv3.style.height = "1.9047619047619049vw";
-    player.width = 2.783882783882784;
-    player2.width = 2.783882783882784;
-    player3.width = 2.783882783882784;
-    player.height = 1.9047619047619049;
-    player2.height = 1.9047619047619049;
-    player3.height = 1.9047619047619049;
-    player.x = 10.989010989010989;
-    player.y = 3.6630036630036633;
-    player2.x = 3.6630036630036633;
-    player2.y = 3.6630036630036633;
+    playerDiv.style.backgroundSize = "38px 26px";
+    playerDiv2.style.backgroundSize = "38px 26px";
+    playerDiv3.style.backgroundSize = "38px 26px";
+    playerDiv.style.width = "38px";
+    playerDiv2.style.width = "38px";
+    playerDiv3.style.width = "38px";
+    playerDiv.style.height = "26px";
+    playerDiv2.style.height = "26px";
+    playerDiv3.style.height = "26px";
+    player.width = 38;
+    player2.width = 38;
+    player3.width = 38;
+    player.height = 26;
+    player2.height = 26;
+    player3.height = 26;
+    player.x = 150;
+    player.y = 50;
+    player2.x = 50;
+    player2.y = 50;
     if(multimode == '2'){
-        player3.y = 99.92673992673993
+        player3.y = 1364
         player3.x = 1;
     }else if(multimode == '3'){
-        player3.y = 3.6630036630036633;
-        player3.x = 21.978021978021978;
+        player3.y = 50;
+        player3.x = 300;
     }
     
     timer.textContent = document.getElementById('timeSet').value
@@ -847,13 +1114,13 @@ function startGame() {
     if (multimode == '3') {
         playerDiv3.style.opacity = 1
         player3.jumping = false;
-        player3.gravity = -0.021978021978021976;
+        player3.gravity = -0.3;
     }
-    player.speed = 0.21978021978021978;
-    player2.speed = 0.21978021978021978;
-    player3.speed = 0.21978021978021978;
-    player.gravity = -0.021978021978021976;
-    player2.gravity = -0.021978021978021976;
+    player.speed = 3;
+    player2.speed = 3;
+    player3.speed = 3;
+    player.gravity = -0.3;
+    player2.gravity = -0.3;
     player.jumping = false;
     player2.jumping = false;
 }
@@ -1105,10 +1372,10 @@ function multi1() {
     document.getElementById('selectCharcter2').style.display = 'block';
     document.getElementById('selectCharcter1').style.position = 'absolute';
     document.getElementById('selectCharcter1').style.left = '5%'; 
-    document.getElementById('img2').style.width = '29.304029304029307vw'; 
+    document.getElementById('img2').style.width = '400px'; 
     document.getElementById('selectCharcter2').style.position = 'absolute';
     document.getElementById('selectCharcter2').style.right = '5%'; 
-    document.getElementById('img1').style.width = '29.304029304029307vw'; 
+    document.getElementById('img1').style.width = '400px'; 
     document.getElementById('selectCharcter3').style.display = 'none'; 
     document.getElementById('img3').style.display = 'none'; 
     player3.gravity = 0;
@@ -1126,16 +1393,16 @@ function multi2() {
     document.getElementById('selectCharcter1').style.position = 'absolute';
     document.getElementById('selectCharcter1').style.left = '5%'; 
     document.getElementById('selectCharcter1').style.bottom = '50%'; 
-    document.getElementById('img2').style.width = '25.64102564102564vw';  
+    document.getElementById('img2').style.width = '350px';  
     document.getElementById('selectCharcter2').style.position = 'absolute';
     document.getElementById('selectCharcter2').style.right = '5%'; 
     document.getElementById('selectCharcter2').style.bottom = '50%';
-    document.getElementById('img1').style.width = '25.64102564102564vw';  
+    document.getElementById('img1').style.width = '350px';  
     document.getElementById('selectCharcter3').style.position = 'absolute';
     document.getElementById('selectCharcter3').style.left = '50%'; 
     document.getElementById('selectCharcter3').style.top = '50%'; 
     document.getElementById('selectCharcter3').style.transform = 'translate(-50%, -50%)';
-    document.getElementById('img3').style.width = '25.64102564102564vw'; 
+    document.getElementById('img3').style.width = '350px'; 
     multimode = '3'; 
 }
 function changeBackground(theValue) {
@@ -1187,3 +1454,7 @@ window.updateFPS = updateFPS;
 window.loadSettings = loadSettings;
 window.multi1 = multi1;
 window.multi2 = multi2;
+
+    </script>
+</body>
+</html>

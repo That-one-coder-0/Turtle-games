@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turtle Rhythm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #474747;
+            color: #fff;
+            text-align: center;
+        }
+        #mainMenu,#savesMenu {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #startButton, #continueButton {
+            font-size: 2vw;
+            background-color: #fff;
+            color: #474747;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        #savesMenu {
+            margin-top: 20px;
+            display: none;
+        }
+        #savesMenu > button{
+            font-size: 1.5vw;
+            border: #333333 solid 0.3vw;
+            background-color: #fff;
+            color: #474747;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #gameContainer {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            bottom: 0;
+            right: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #333;
+        }
+        #saveButton{
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 1.5vw;
+            background-color: #fff;
+            color: #474747;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="mainMenu">
+        <h1>Turtle Rhythm</h1>
+        <p>Click the button below to start the game.</p>
+        <button id="startButton" onclick="mainClicked(this)">Start New Game</button><br><br>
+        <button id="continueButton" onclick="mainClicked(this)">Continue a Game</button>
+    </div>
+    <div id="savesMenu">
+        <h2>Game saves</h2>
+        <button id="1" onclick="saveClicked(this)">Save 1</button>
+        <button id="2" onclick="saveClicked(this)">Save 2</button>
+        <button id="3" onclick="saveClicked(this)">Save 3</button>
+        <br><br>
+        <button id="4" onclick="saveClicked(this)">Save 4</button>
+        <button id="5" onclick="saveClicked(this)">Save 5</button>
+        <button id="6" onclick="saveClicked(this)">Save 6</button>
+        <br><br>
+        <button id="" onclick="document.getElementById('mainMenu').style.display='block';document.getElementById('savesMenu').style.display='none';continueButtonClicked=null;">Back</button>
+    </div>
+    <div id="gameContainer">
+        <button onclick="saveGame()" id="saveButton">Save</button>
+    </div>
+
+    <script>
+        let gameStarted = false;
+        let gamePaused = false;
+        let continueButtonClicked = null; 
+        let gameSave = null;
+        let gameData = {
+            levelsUnlocked: [],
+            currentLevel: 0,
+            itemsUnlocked: [],
+            levelScores:{
+                l1: {
+                    name: 0,
+                    bestScore: 0,
+                    src:'',
+                    completed: false
+                },
+                l2: {
+                    name: 0,
+                    bestScore: 0,
+                    src:'',
+                    completed: false
+                },
+                l3: {
+                    name: 0,
+                    bestScore: 0,
+                    src:'',
+                    completed: false
+                },
+                l4: {
+                    name: 0,
+                    bestScore: 0,
+                    src:'',
+                    completed: false
+                },
+                l5: {
+                    name: 0,
+                    bestScore: 0,
+                    src:'',
+                    completed: false
+                },
+                l6:  {
+                    name: 0,
+                    bestScore: 0,
+                    src:'',
+                    completed: false
+                }
+            }
+        }
+        function mainClicked(button) {
+            if (button.id === 'startButton') {
+                continueButtonClicked = false;
+            } else {
+                continueButtonClicked = true;  
+            }
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('savesMenu').style.display = 'block';
+        }
+        function saveClicked(button){
+            if(continueButtonClicked) {
+                if(localStorage.getItem(`turtleRhythmGameData${button.id}`)) {
+                gameData = JSON.parse(localStorage.getItem(`turtleRhythmGameData${button.id}`));
+                alert('Game loaded successfully!');
+                document.getElementById('gameContainer').style.display = 'block';
+                document.getElementById('savesMenu').style.display = 'none';
+                gameStarted = true;
+                } else {
+                alert('No saved game found for this slot.');
+                return;
+                }
+            } else {
+                if(localStorage.getItem(`turtleRhythmGameData${button.id}`)){
+                    if (window.confirm('This will overwrite the current save. Do you want to continue?')) {
+                        document.getElementById('gameContainer').style.display = 'block';
+                        document.getElementById('savesMenu').style.display = 'none';
+                        gameStarted = true;
+                    }
+                }else{
+                    alert('No saved game found for this slot. Starting a new game.');
+                    document.getElementById('gameContainer').style.display = 'block';
+                    document.getElementById('savesMenu').style.display = 'none';
+                    gameStarted = true;
+                }
+            }
+            gameSave = parseInt(button.id);
+        }
+        function saveGame() {
+            localStorage.setItem(`turtleRhythmGameData${gameSave}`, JSON.stringify(gameData));
+            alert('Game saved successfully!');
+        }
+    </script>
+</body>
+</html>
