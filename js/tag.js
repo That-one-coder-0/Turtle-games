@@ -1100,7 +1100,6 @@ function multi1() {
     document.getElementById('modeSelect').style.display = 'none';
     document.getElementById('settingIcon').style.display = 'none';
     document.getElementById('shopbutton').style.display = 'none';
-    //document.getElementById('Shop').style.backgroundColor = color.menus;
     document.getElementById('selectCharcter').style.display = 'block';
     document.getElementById('selectCharcter2').style.display = 'block';
     document.getElementById('selectCharcter1').style.position = 'absolute';
@@ -1118,7 +1117,6 @@ function multi2() {
     document.getElementById('modeSelect').style.display = 'none';
     document.getElementById('settingIcon').style.display = 'none';
     document.getElementById('shopbutton').style.display = 'none';
-    //document.getElementById('Shop').style.backgroundColor = color.menus;
     document.getElementById('selectCharcter').style.display = 'block';
     document.getElementById('selectCharcter1').style.display = 'block'; 
     document.getElementById('selectCharcter2').style.display = 'block'; 
