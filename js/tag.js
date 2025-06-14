@@ -1133,7 +1133,7 @@ function multi2() {
     document.getElementById('img1').style.width = '25.64102564102564vw';  
     document.getElementById('selectCharcter3').style.position = 'absolute';
     document.getElementById('selectCharcter3').style.left = '50%'; 
-    document.getElementById('selectCharcter3').style.top = '33vw'; 
+    document.getElementById('selectCharcter3').style.top = '32vw'; 
     document.getElementById('selectCharcter3').style.transform = 'translate(-50%, -50%)';
     document.getElementById('img3').style.width = '25.64102564102564vw'; 
     multimode = '3'; 
