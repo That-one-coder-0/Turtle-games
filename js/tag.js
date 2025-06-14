@@ -1101,7 +1101,7 @@ function multi1() {
     document.getElementById('settingIcon').style.display = 'none';
     document.getElementById('shopbutton').style.display = 'none';
     //document.getElementById('Shop').style.backgroundColor = color.menus;
-    document.getElementById('selectCharcter').style.display = 'block';
+    document.getElementById('selectCharcter1').style.display = 'block';
     document.getElementById('selectCharcter2').style.display = 'block';
     document.getElementById('selectCharcter1').style.position = 'absolute';
     document.getElementById('selectCharcter1').style.left = '2%'; 
@@ -1119,7 +1119,6 @@ function multi2() {
     document.getElementById('settingIcon').style.display = 'none';
     document.getElementById('shopbutton').style.display = 'none';
     //document.getElementById('Shop').style.backgroundColor = color.menus;
-    document.getElementById('selectCharcter').style.display = 'block';
     document.getElementById('selectCharcter1').style.display = 'block'; 
     document.getElementById('selectCharcter2').style.display = 'block'; 
     document.getElementById('selectCharcter3').style.display = 'block'; 
