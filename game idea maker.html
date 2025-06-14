@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game idea</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #idea {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        #history {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Game Idea Maker</h1>
+        <p>Click the button below to generate a random game idea!</p>
+        <button onclick="">Generate an idea</button>
+        <button onclick=""></button>
+    </div>
+    <div id="idea">
+
+    </div>
+    <div id="history">
+        <h2>History</h2>
+        <ul id="history-list"></ul>
+    <script>
+        const ideas = [
+            "A platformer where you play as a time-traveling cat.",
+            "A puzzle game set in a world made entirely of candy.",
+            "An RPG where you are a detective solving crimes in a futuristic city.",
+            "A survival game on a deserted island with mythical creatures.",
+            "A simulation game where you manage a farm on Mars."
+        ];
+
+        const historyList = document.getElementById('history-list');
+
+        function generateIdea() {
+            const randomIndex = Math.floor(Math.random() * ideas.length);
+            const idea = ideas[randomIndex];
+            document.getElementById('idea').innerText = idea;
+            addToHistory(idea);
+        }
+
+        function addToHistory(idea) {
+            const listItem = document.createElement('li');
+            listItem.innerText = idea;
+            historyList.appendChild(listItem);
+        }
+
+        document.querySelector('button').addEventListener('click', generateIdea);
+    </script>
+</body>
+</html>
