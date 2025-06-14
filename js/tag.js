@@ -1124,11 +1124,11 @@ function multi2() {
     document.getElementById('selectCharcter2').style.display = 'block'; 
     document.getElementById('selectCharcter3').style.display = 'block'; 
     document.getElementById('selectCharcter1').style.position = 'absolute';
-    document.getElementById('selectCharcter1').style.left = '5%'; 
+    document.getElementById('selectCharcter1').style.left = '2%'; 
     document.getElementById('selectCharcter1').style.bottom = '17vw'; 
     document.getElementById('img2').style.width = '25.64102564102564vw';  
     document.getElementById('selectCharcter2').style.position = 'absolute';
-    document.getElementById('selectCharcter2').style.right = '5%'; 
+    document.getElementById('selectCharcter2').style.right = '2%'; 
     document.getElementById('selectCharcter2').style.bottom = '17vw';
     document.getElementById('img1').style.width = '25.64102564102564vw';  
     document.getElementById('selectCharcter3').style.position = 'absolute';
