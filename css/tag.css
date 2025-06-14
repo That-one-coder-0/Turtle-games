@@ -111,7 +111,7 @@
             top: 12vh;
             transform: translate(-50%, -50%);
         }
-        #selectCharcter1 {
+        #selectCharcter{
             display: none;
         }
         #selectCharcter2 {
