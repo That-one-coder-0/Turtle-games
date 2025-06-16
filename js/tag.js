@@ -788,16 +788,16 @@ function startGame() {
     player.height = 1.9047619047619049;
     player2.height = 1.9047619047619049;
     player3.height = 1.9047619047619049;
-    player.x = 10.989010989010989;
-    player.y = 3.6630036630036633;
-    player2.x = 3.6630036630036633;
-    player2.y = 3.6630036630036633;
+    player.x = 3.6630036630036633;
+    player.y = 9;
+    player2.x = 48.719;
+    player2.y = 9;
     if(multimode == '2'){
         player3.y = 99.92673992673993
         player3.x = 1;
     }else if(multimode == '3'){
-        player3.y = 3.6630036630036633;
-        player3.x = 21.978021978021978;
+        player3.y = 16;
+        player3.x = 23.978021978021978;
     }
     
     timer.textContent = document.getElementById('timeSet').value
